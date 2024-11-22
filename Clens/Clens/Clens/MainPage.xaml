@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clens.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <Image Source="clenslogo.jpeg" HorizontalOptions="Center"/>
+        <RelativeLayout HorizontalOptions="Center">
+            <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
+                <StackLayout>
+                    <Entry Placeholder="Логин" Margin="0,30,0,50" HorizontalTextAlignment="Center"></Entry>
+                    <Entry Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
+                    <Button Text="Войти" BackgroundColor="#B5DDA4" FontSize="25"  Clicked="Button_Clicked"></Button>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Запомнить меня" FontSize="17" TextColor="Gray" Margin="5"></Label>
+                        <Switch IsToggled="False" OnColor="#B5DDA4" ThumbColor="#B5DDA4"></Switch>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </RelativeLayout>
+        <StackLayout  Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Впервые здесь?" FontSize="18" HorizontalTextAlignment="Center"></Label>
+            <Label Text="Зарестрируйтесь!" FontSize="18" FontAttributes="Bold" TextColor="#B5DDA4" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>

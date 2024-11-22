@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clens.App">
+    <Application.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Background" Value="#B5DDA4"></Setter>
+            <Setter Property="FontSize" Value="25"></Setter>
+            <Setter Property="CornerRadius" Value="15"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+        </Style>
+    </Application.Resources>
+</Application>
