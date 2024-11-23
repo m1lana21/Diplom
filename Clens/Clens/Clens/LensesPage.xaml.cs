@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -15,7 +14,6 @@ namespace Clens
 	public partial class LensesPage : ContentPage
 	{
         private DateTime selectedDate;
-        private readonly object args;
 
         public LensesPage ()
 		{

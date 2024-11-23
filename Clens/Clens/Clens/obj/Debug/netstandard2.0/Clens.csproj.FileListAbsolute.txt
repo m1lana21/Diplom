@@ -18,3 +18,4 @@ D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\XamlC.stamp
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\refint\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.pdb
+D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.sourcelink.json
