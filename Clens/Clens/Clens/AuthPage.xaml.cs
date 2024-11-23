@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
+using Firebase.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Firebase.Auth.Providers;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace Clens
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AuthPage : ContentPage
 	{
-		public AuthPage ()
+        private const string FirebaseAPIKey = "AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
+        public AuthPage ()
 		{
 			InitializeComponent ();
 		}
@@ -22,5 +27,65 @@ namespace Clens
             var mainPage = new MainPage();
             await Navigation.PushAsync(mainPage);
         }
+
+        private async void registerButton_Clicked(object sender, EventArgs e)
+        {
+            string email = emailEntry.Text;
+            string login = loginEntry.Text;
+            string password = passwordEntry.Text;
+            string confirmPassword = passwordConfirmEntry.Text;
+            if (ValidateInputs(email, login, password, confirmPassword))
+            {
+                await SaveUserData(email, login, password, confirmPassword);
+                await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
+            }
+        }
+
+        private bool ValidateInputs(string email, string login, string password, string confirmPassword)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(login) ||
+                string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
+            {
+                DisplayAlert("Ошибка", "Пожалуйста, заполните все поля.", "OK");
+                return false;
+            }
+
+            if (password != confirmPassword)
+            {
+                DisplayAlert("Ошибка", "Пароли не совпадают.", "OK");
+                return false;
+            }
+
+            if (!IsValidPassword(password))
+            {
+                DisplayAlert("Ошибка", "Пароль должен содержать не менее 8 символов, " +
+                    "включать заглавные и строчные буквы, цифры и специальные символы.", "OK");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+            return passwordRequirement.IsMatch(password);
+        }
+
+        private async Task SaveUserData(string email, string username, string password, string token)
+        {
+            // Здесь можно использовать Firebase Database для сохранения данных
+            // Например:
+            var userData = new { Email = email, Username = username, Password = password }; // Это пример
+            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+            // Сохранение данных в базе
+            await firebase
+                .Child("users")
+                .Child(token) // или использовать уникальный идентификатор
+                .PutAsync(userData);
+        }
+
+        
     }
 }
