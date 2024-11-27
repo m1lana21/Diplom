@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using Firebase.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Firebase.Auth.Providers;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Clens
 {
@@ -25,7 +23,7 @@ namespace Clens
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var mainPage = new MainPage();
-            await Navigation.PushAsync(mainPage);
+            await Navigation.PushAsync(mainPage); //тут сделать возврат на предыдущую страницу
         }
 
         private async void registerButton_Clicked(object sender, EventArgs e)
@@ -38,7 +36,9 @@ namespace Clens
             {
                 await SaveUserData(email, login, password, confirmPassword);
                 await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
+                await RegisterUser(login, email, password);
             }
+            
         }
 
         private bool ValidateInputs(string email, string login, string password, string confirmPassword)
@@ -74,18 +74,46 @@ namespace Clens
 
         private async Task SaveUserData(string email, string username, string password, string token)
         {
-            // Здесь можно использовать Firebase Database для сохранения данных
-            // Например:
             var userData = new { Email = email, Username = username, Password = password }; // Это пример
             var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
 
-            // Сохранение данных в базе
             await firebase
                 .Child("users")
-                .Child(token) // или использовать уникальный идентификатор
+                .Child(token)
                 .PutAsync(userData);
         }
 
-        
+        public class FirebaseResponse
+        {
+            public string IdToken { get; set; }
+            public bool Registered { get; set; }
+        }
+
+        public async Task<FirebaseResponse> RegisterUser(string login, string email, string password)
+        {
+            var client = new HttpClient();
+            var requestUri = $"https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
+
+            var content = new StringContent(JsonConvert.SerializeObject(new
+            {
+                email,
+                login,
+                password,
+                returnSecureToken = true
+            }), Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync(requestUri, content);
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+                return firebaseResponse;
+            }
+            else
+            {
+                throw new Exception($"Ошибка регистрации: {responseString}");
+            }
+        }
     }
 }

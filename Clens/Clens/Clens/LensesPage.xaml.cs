@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -7,6 +8,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
+using Firebase.Database.Query;
 
 namespace Clens
 {
@@ -31,7 +35,16 @@ namespace Clens
             await DisplayAlert("Дата выбрана", $"Вы выбрали {selectedDate.ToShortDateString()}", "OK");
         }
 
-       
+        private async Task SaveUserData(string startDate, string lensType, string endDate)
+        {
+            var userData = new { StartDate = startDate, TypeOfLenses = lensType, EndDate = endDate };
+            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+            await firebase
+                .Child("lensesHistory")
+                .PostAsync(userData);
+        }
+
+
     }
 
 }

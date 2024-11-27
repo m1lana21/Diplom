@@ -1,70 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Clens.AuthPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.AuthPage">
     <ContentPage.Content>
-        
-        
         <StackLayout Padding="20" VerticalOptions="Center" HorizontalOptions="Center">
-
             <RelativeLayout HorizontalOptions="Center">
                 <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
                     <StackLayout>
-                        <Label Text="Регистрация" 
-                           FontSize="32" 
-                           FontAttributes="Bold" 
-                           HorizontalOptions="Center"
-                           TextColor="#4A4A4A"/>
-
-                        <Entry Placeholder="Логин" 
-                           FontSize="18" 
-                           Margin="0,20,0,0"
-                           HeightRequest="50" 
-                           BackgroundColor="White"
-                           TextColor="#4A4A4A"
-                           PlaceholderColor="#A9A9A9"
-                           x:Name="loginEntry"/>
-
-                        <Entry Placeholder="Электронная почта" 
-                           FontSize="18" 
-                           HeightRequest="50" 
-                           BackgroundColor="White"
-                           TextColor="#4A4A4A"
-                           PlaceholderColor="#A9A9A9"
-                           x:Name="emailEntry"/>
-
-                        <Entry Placeholder="Пароль" 
-                           IsPassword="True"
-                           FontSize="18" 
-                           HeightRequest="50" 
-                           BackgroundColor="White"
-                           TextColor="#4A4A4A"
-                           PlaceholderColor="#A9A9A9" x:Name="passwordEntry"/>
-
-                        <Entry Placeholder="Подтвердите пароль" 
-                           IsPassword="True"
-                           FontSize="18" 
-                           HeightRequest="50" 
-                           BackgroundColor="White"
-                           TextColor="#4A4A4A"
-                           PlaceholderColor="#A9A9A9" x:Name="passwordConfirmEntry"/>
+                        <Label Text="Регистрация" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#4A4A4A"/>
+                        <Entry Placeholder="Логин" FontSize="18" Margin="0,20,0,0" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="loginEntry"/>
+                        <Entry Placeholder="Электронная почта" FontSize="18" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="emailEntry"/>
+                        <Entry Placeholder="Пароль" IsPassword="True" FontSize="18" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="passwordEntry"/>
+                        <Entry Placeholder="Подтвердите пароль" IsPassword="True" FontSize="18" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="passwordConfirmEntry"/>
                     </StackLayout>
                 </Frame>
             </RelativeLayout>
-            
-
-                <Button Text="Зарегистрироваться" 
-                Margin="0,20,0,0"
-                x:Name="registerButton" Clicked="registerButton_Clicked"/>
-
-            <Label Text="Уже есть аккаунт?" 
-               FontSize="14" 
-               HorizontalOptions="Center" 
-               TextColor="#4A4A4A" 
-               Margin="0,20,0,0"/>
-
-            <Button Text="Войти" 
-               Clicked="Button_Clicked"/>
+            <Button Text="Зарегистрироваться" Margin="0,20,0,0" x:Name="registerButton" Clicked="registerButton_Clicked"/>
+            <Label Text="Уже есть аккаунт?" FontSize="14" HorizontalOptions="Center" TextColor="#4A4A4A" Margin="0,20,0,0"/>
+            <Button Text="Войти" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
