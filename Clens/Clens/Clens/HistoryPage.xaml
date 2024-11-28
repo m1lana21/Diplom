@@ -7,13 +7,6 @@
     </ContentPage.BindingContext>
 
     <StackLayout VerticalOptions="FillAndExpand">
-        <!--<Label Text="Вы часто носите линзы дольше положенного срока! Пожалуйста, соблюдайте рекомендации производителя."
-               IsVisible="{Binding ShowWarning}"
-               BackgroundColor="OrangeRed"
-               HorizontalTextAlignment="Center"
-               FontSize="Medium"/>-->
-
-        <!-- Список истории ношения линз -->
         <ListView ItemsSource="{Binding HistoryItems}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -27,10 +20,10 @@
                                     <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность носки: {0:%d} дней'}" />
                                 </StackLayout>
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="End" Grid.RowSpan="2" Grid.Column="1">
-                                    <Button  HeightRequest="40" WidthRequest="40" />          
+                                    <Button  HeightRequest="40" WidthRequest="40" />
                                     <Button  HeightRequest="40" WidthRequest="40" />
                                 </StackLayout>
-                                
+
                             </Grid>
                         </Frame>
                     </ViewCell>

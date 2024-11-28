@@ -34,7 +34,6 @@ namespace Clens
             string confirmPassword = passwordConfirmEntry.Text;
             if (ValidateInputs(email, login, password, confirmPassword))
             {
-                await SaveUserData(email, login, password, confirmPassword);
                 await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 await RegisterUser(login, email, password);
             }
@@ -72,16 +71,7 @@ namespace Clens
             return passwordRequirement.IsMatch(password);
         }
 
-        private async Task SaveUserData(string email, string username, string password, string token)
-        {
-            var userData = new { Email = email, Username = username, Password = password }; // Это пример
-            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
-
-            await firebase
-                .Child("users")
-                .Child(token)
-                .PutAsync(userData);
-        }
+        
 
         public class FirebaseResponse
         {
@@ -112,7 +102,7 @@ namespace Clens
             }
             else
             {
-                throw new Exception($"Ошибка регистрации: {responseString}");
+                throw new Exception($"Ошибка регистрации!");
             }
         }
     }

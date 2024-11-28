@@ -1,7 +1,3 @@
-D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.deps.json
-D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.dll
-D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\ref\Clens.dll
-D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.pdb
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.csproj.AssemblyReference.cache
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.GeneratedMSBuildEditorConfig.editorconfig
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\App.xaml.g.cs
@@ -14,8 +10,12 @@ D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\SecondPage.xaml
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.AssemblyInfoInputs.cache
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.AssemblyInfo.cs
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.csproj.CoreCompileInputs.cache
-D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.sourcelink.json
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\refint\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.pdb
-D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.sourcelink.json
+D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.deps.json
+D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.dll
+D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\ref\Clens.dll
+D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.pdb
+D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\XamlC.stamp

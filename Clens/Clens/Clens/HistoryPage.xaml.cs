@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace Clens
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HistoryPage : ContentPage
-	{
-		public HistoryPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HistoryPage : ContentPage
+    {
+        public HistoryPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
