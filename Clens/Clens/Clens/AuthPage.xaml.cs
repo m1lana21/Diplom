@@ -34,7 +34,6 @@ namespace Clens
             string confirmPassword = passwordConfirmEntry.Text;
             if (ValidateInputs(email, login, password, confirmPassword))
             {
-                await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 await RegisterUser(login, email, password);
             }
             
@@ -98,11 +97,13 @@ namespace Clens
             if (response.IsSuccessStatusCode)
             {
                 var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+                await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 return firebaseResponse;
             }
             else
             {
-                throw new Exception($"Ошибка регистрации!");
+                await DisplayAlert("Ошибка", "Укажите действительный email!", "OK");
+                return null;
             }
         }
     }
