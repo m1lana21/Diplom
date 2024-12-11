@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,26 +53,29 @@ namespace Clens
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var email = ((Entry)FindByName("EmailEntry")).Text;
-            var password = ((Entry)FindByName("PasswordEntry")).Text;
+            //var email = ((Entry)FindByName("EmailEntry")).Text;
+            //var password = ((Entry)FindByName("PasswordEntry")).Text;
 
-            try
-            {
-                var loginResult = await LoginUser(email, password);
-                if (loginResult != null && !string.IsNullOrEmpty(loginResult.IdToken))
-                {
-                    var secPage = new SecondPage();
-                    await Navigation.PushAsync(secPage);
-                }
-                else
-                {
-                    await DisplayAlert("Ошибка", "Неверный логин или пароль", "OK");
-                }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Ошибка", ex.Message, "OK");
-            }
+            //try
+            //{
+            //    var loginResult = await LoginUser(email, password);
+            //    if (loginResult != null && !string.IsNullOrEmpty(loginResult.IdToken))
+            //    {
+            //        var secPage = new SecondPage();
+            //        await Navigation.PushAsync(secPage);
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Ошибка", "Неверный логин или пароль", "OK");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    await DisplayAlert("Ошибка", ex.Message, "OK");
+            //}
+            var secPage = new AppShell();
+            await Navigation.PushAsync(secPage);
+            Debug.WriteLine("переход успешен");
         }
     }
 }

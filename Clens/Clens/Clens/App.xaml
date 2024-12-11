@@ -8,5 +8,18 @@
             <Setter Property="CornerRadius" Value="15"></Setter>
             <Setter Property="TextColor" Value="Black"></Setter>
         </Style>
+
+        <!--<ResourceDictionary>
+            <Color x:Key="ShellBackgroundColor">White</Color>
+            <Color x:Key="ShellForegroundColor">Black</Color>
+            <Color x:Key="ShellTitleColor">Black</Color>
+            <Color x:Key="ShellDisabledColor">#B5DDA4</Color>
+            <Color x:Key="ShellUnselectedColor">#B5DDA4</Color>
+            <Color x:Key="ShellTabBarBackgroundColor">White</Color>
+            <Color x:Key="ShellTabBarForegroundColor">Black</Color>
+            <Color x:Key="ShellTabBarTitleColor">#B5DDA4</Color>
+            <Color x:Key="ShellTabBarUnselectedColor">Black</Color>
+        </ResourceDictionary>-->
     </Application.Resources>
+    
 </Application>

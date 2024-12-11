@@ -85,7 +85,20 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\account.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\history.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\lenses.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clens\Clens.csproj">
       <Project>{BAEA5914-B93A-45EA-AF31-C750A1DC2DA8}</Project>
@@ -94,6 +107,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\clenslogo.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidResource>
   </ItemGroup>

@@ -1,0 +1,12 @@
+﻿<Shell  xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Clens" xmlns:local1="clr-namespace:Clens"
+       x:Class="Clens.AppShell">
+    
+    <TabBar>
+        <ShellContent Title="Линзы"  Route="LensesPage" ContentTemplate="{DataTemplate local:LensesPage}" />
+        <ShellContent Title="История" Route="HistoryPage" ContentTemplate="{DataTemplate local:HistoryPage}"/>
+        <ShellContent Title="Карты" Route="MapPage" ContentTemplate="{DataTemplate local:MapPage}"/>
+        <ShellContent Title="Профиль" Route="AccountPage" ContentTemplate="{DataTemplate local:AccountPage}"/>
+    </TabBar>
+</Shell>

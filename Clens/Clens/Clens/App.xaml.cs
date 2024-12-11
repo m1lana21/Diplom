@@ -10,8 +10,8 @@ namespace Clens
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
-            NavigationPage navigationPage = new NavigationPage(new MainPage())
+            MainPage = new NavigationPage(new AppShell());
+            NavigationPage navigationPage = new NavigationPage(new AppShell())
             {
                 BarBackgroundColor = Color.FromHex("#B5DDA4"),
                 BarTextColor = Color.Black,

@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\appshell.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\appshell.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\historypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\historypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,15 +62,93 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\App.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\App.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T19:21:51.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\AppShell.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AppShell.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T18:50:01.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AppShell.xaml",
+              "RelativeDocumentMoniker": "Clens\\Clens\\AppShell.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AppShell.xaml",
+              "RelativeToolTip": "Clens\\Clens\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-11T18:44:10.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\MainPage.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\MainPage.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\MainPage.xaml.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T21:06:11.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LensesPage.xaml.cs",
               "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\LensesPage.xaml.cs",
               "RelativeDocumentMoniker": "Clens\\Clens\\LensesPage.xaml.cs",
               "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\LensesPage.xaml.cs",
               "RelativeToolTip": "Clens\\Clens\\LensesPage.xaml.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAADwv6MAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T21:05:31.551Z",
+              "WhenOpened": "2024-12-09T20:06:07.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HistoryPage.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\HistoryPage.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\HistoryPage.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\HistoryPage.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\HistoryPage.xaml.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAADwv3kAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T21:09:34.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FirebaseService.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\FirebaseService.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\FirebaseService.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\FirebaseService.cs",
+              "RelativeToolTip": "Clens\\Clens\\FirebaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T21:15:00.003Z",
               "EditorCaption": ""
             }
           ]

@@ -2,12 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Clens.HistoryPage" xmlns:local="clr-namespace:Clens">
-    <ContentPage.BindingContext>
-        <local:MainPageViewModel />
-    </ContentPage.BindingContext>
-
     <StackLayout VerticalOptions="FillAndExpand">
-        <ListView ItemsSource="{Binding HistoryItems}" HasUnevenRows="True">
+        <ListView ItemsSource="{Binding HistoryItems}" x:Name="HistoryListView" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -20,10 +16,9 @@
                                     <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность носки: {0:%d} дней'}" />
                                 </StackLayout>
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="End" Grid.RowSpan="2" Grid.Column="1">
-                                    <Button  HeightRequest="40" WidthRequest="40" />
-                                    <Button  HeightRequest="40" WidthRequest="40" />
+                                    <ImageButton Source="edit.png" x:Name="editButton" HeightRequest="30" WidthRequest="30" Clicked="editButton_Clicked"/>
+                                    <ImageButton x:Name="deleteButton" HeightRequest="30" WidthRequest="30" Source="delete.png" Clicked="deleteButton_Clicked"/>
                                 </StackLayout>
-
                             </Grid>
                         </Frame>
                     </ViewCell>

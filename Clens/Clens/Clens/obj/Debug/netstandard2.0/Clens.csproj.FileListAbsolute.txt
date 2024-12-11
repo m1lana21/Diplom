@@ -19,3 +19,5 @@ D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\ref\Clens.dll
 D:\Study\Диплом\Clens\Clens\Clens\bin\Debug\netstandard2.0\Clens.pdb
 D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\AccountPage.xaml.g.cs
+D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
