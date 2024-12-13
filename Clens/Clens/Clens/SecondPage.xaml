@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Clens"
-             x:Class="Clens.SecondPage" BarBackgroundColor="#B5DDA4" BarTextColor="Black" BarBackground="#B5DDA4">
+             x:Class="Clens.SecondPage" BarBackgroundColor="#B5DDA4" BarTextColor="Black" BarBackground="#B5DDA4"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" android:TabbedPage.ToolbarPlacement="Bottom"
+             BackgroundColor="White">
     <TabbedPage.Children>
-        <local:LensesPage Title="Линзы" />
-        <local:HistoryPage Title="История" />
-        <local:MapPage Title="Карты" />
+        <local:LensesPage Title="Линзы" IconImageSource="lenses.png"/>
+        <local:HistoryPage Title="История" IconImageSource="history.png"/>
+        <local:MapPage Title="Карты" IconImageSource="map.png"/>
+        <local:AccountPage Title="Профиль" IconImageSource="account.png"/>
     </TabbedPage.Children>
 </TabbedPage>

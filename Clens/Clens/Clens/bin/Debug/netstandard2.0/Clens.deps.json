@@ -9,16 +9,26 @@
     ".NETStandard,Version=v2.0/": {
       "Clens/1.0.0": {
         "dependencies": {
+          "Acr.UserDialogs": "8.0.0",
           "FirebaseAuth": "2.0.6",
           "FirebaseAuthentication.net": "4.1.0",
           "FirebaseDatabase.net": "4.2.0",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
+          "Rg.Plugins.Popup": "2.1.0",
           "Xamarin.Essentials": "1.8.1",
           "Xamarin.Forms": "5.0.0.2662"
         },
         "runtime": {
           "Clens.dll": {}
+        }
+      },
+      "Acr.UserDialogs/8.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "8.0.0.4",
+            "fileVersion": "8.0.0.4"
+          }
         }
       },
       "FirebaseAuth/2.0.6": {
@@ -523,6 +533,17 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.8.5.0",
             "fileVersion": "1.8.5.50"
+          }
+        }
+      },
+      "Rg.Plugins.Popup/2.1.0": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2662"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
           }
         }
       },
@@ -1363,6 +1384,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Acr.UserDialogs/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jUXIX3iO1GCHy9PvuJpaAJHW+FKQMoVqPFP6N/vjogj+2b1VIVOVeMntTRy+5KNy1Exh2viovHzysh1q7OCYXA==",
+      "path": "acr.userdialogs/8.0.0",
+      "hashPath": "acr.userdialogs.8.0.0.nupkg.sha512"
+    },
     "FirebaseAuth/2.0.6": {
       "type": "package",
       "serviceable": true,
@@ -1663,6 +1691,13 @@
       "sha512": "sha512-EaCgmntbH1sOzemRTqyXSqYjB6pLH7VCYHhhDYZ59guHSD5qPwhIYa7kfy0QUlmTRt9IXhaXdFhNuBUArp70Ng==",
       "path": "portable.bouncycastle/1.8.5",
       "hashPath": "portable.bouncycastle.1.8.5.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-caKjkvimzpUqk4pO/WSFn3uOX43uZNW5rPWCx7eXkOlGG9Br90MTwNVS1nxhtyypB69uUe/0GQPEC3rz+kscbA==",
+      "path": "rg.plugins.popup/2.1.0",
+      "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 x:Class="Clens.EditPage">
+    <Frame HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
+        <StackLayout>
+            <StackLayout Margin="0,0,0,10">
+                <Label Text="НАЧАЛЬНАЯ ДАТА: " TextColor="Gray" FontSize="20" />
+                <DatePicker x:Name="startDate" FontSize="20" Format="dd MMMM yyyy" TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout Margin="0,0,0,10">
+                <Label Text="ДАТА ЗАМЕНЫ: " TextColor="Gray" FontSize="20" />
+                <DatePicker x:Name="endDate" FontSize="20" Format="dd MMMM yyyy" TextColor="Black"/>
+            </StackLayout>
+
+            <Picker x:Name="lensTypePicker" Title="Укажите тип линз:" FontSize="20">
+                <Picker.Items>
+                    <x:String>Однодневные</x:String>
+                    <x:String>Двухнедельные</x:String>
+                    <x:String>Одномесячные</x:String>
+                    <x:String>Полугодовые</x:String>
+                    <x:String>Годовые</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button x:Name="saveButton" Text="Сохранить" Clicked="saveButton_Clicked"></Button>
+            <Label Text="ОТМЕНА" HorizontalOptions="Center" x:Name="cancelLabel"  TextColor="#B5DDA4" FontSize="25">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="cancelLabel_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </Frame>
+</popup:PopupPage>

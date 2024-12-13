@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "Clens.Android.dll" comes first in this list. */
 		"Clens.Android.dll",
+		"Acr.UserDialogs.dll",
 		"BouncyCastle.Crypto.dll",
 		"Clens.dll",
 		"Firebase.Auth.dll",
@@ -44,6 +45,7 @@ public class MonoPackageManager_Resources {
 		"Microsoft.Win32.Registry.dll",
 		"Newtonsoft.Json.Bson.dll",
 		"Newtonsoft.Json.dll",
+		"Rg.Plugins.Popup.dll",
 		"System.IdentityModel.Tokens.Jwt.dll",
 		"System.Net.Http.Formatting.dll",
 		"System.Reactive.dll",
