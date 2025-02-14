@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
+using System.Globalization;
+using System.Threading;
+using Xamarin.Essentials;
 namespace Clens
 {
     public partial class App : Application
@@ -9,12 +12,23 @@ namespace Clens
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new SecondPage());
-            NavigationPage navigationPage = new NavigationPage(new SecondPage())
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
+            NavigationPage navigationPage;
+
+            if (Preferences.Get("IsRemembered", false))
             {
-                BarBackgroundColor = Color.FromHex("#B5DDA4"),
-                BarTextColor = Color.Black,
-            };
+                navigationPage = new NavigationPage(new SecondPage());
+            }
+            else
+            {
+                navigationPage = new NavigationPage(new MainPage());
+            }
+
+            navigationPage.BarBackgroundColor = Color.FromHex("#B5DDA4");
+            navigationPage.BarTextColor = Color.Black;
+
+            Application.Current.MainPage = navigationPage;
+
 
             MainPage = navigationPage;
         }

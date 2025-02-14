@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using static Clens.AuthPage;
 
@@ -16,12 +17,41 @@ namespace Clens
             InitializeComponent();
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Проверяем, был ли установлен флажок "Запомнить меня"
+            if (Preferences.Get("IsRemembered", false))
+            {
+                // Получаем сохранённый логин и пароль
+                var savedEmail = Preferences.Get("SavedEmail", "");
+                var savedPassword = Preferences.Get("SavedPassword", "");
+
+                // Выполняем автоматический вход
+                var loginResult = await LoginUser(savedEmail, savedPassword);
+                if (loginResult != null && !string.IsNullOrEmpty(loginResult.IdToken))
+                {
+                    // Переходим на следующую страницу
+                    var secPage = new SecondPage();
+                    await Navigation.PushAsync(secPage);
+                }
+                else
+                {
+                    // Ошибка аутентификации, возможно, данные устарели
+                    await DisplayAlert("Ошибка", "Не удалось войти автоматически. Попробуйте снова.", "ОК");
+                }
+            }
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var authPage = new AuthPage();
 
             await Navigation.PushAsync(authPage);
         }
+
+        
 
         public async Task<FirebaseResponse> LoginUser(string email, string password)
         {
@@ -41,6 +71,12 @@ namespace Clens
             if (response.IsSuccessStatusCode)
             {
                 var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+
+                // Если вход успешен, сохраняем данные пользователя
+                Preferences.Set("IsRemembered", true);
+                Preferences.Set("SavedEmail", email);
+                Preferences.Set("SavedPassword", password);
+
                 return firebaseResponse;
             }
             else
@@ -49,33 +85,52 @@ namespace Clens
             }
         }
 
-
-
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            //var email = ((Entry)FindByName("EmailEntry")).Text;
-            //var password = ((Entry)FindByName("PasswordEntry")).Text;
+            var email = ((Entry)FindByName("EmailEntry")).Text;
+            var password = ((Entry)FindByName("PasswordEntry")).Text;
 
-            //try
-            //{
-            //    var loginResult = await LoginUser(email, password);
-            //    if (loginResult != null && !string.IsNullOrEmpty(loginResult.IdToken))
-            //    {
-            //        var secPage = new SecondPage();
-            //        await Navigation.PushAsync(secPage);
-            //    }
-            //    else
-            //    {
-            //        await DisplayAlert("Ошибка", "Неверный логин или пароль", "OK");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    await DisplayAlert("Ошибка", ex.Message, "OK");
-            //}
-            var secPage = new AppShell();
-            await Navigation.PushAsync(secPage);
-            Debug.WriteLine("переход успешен");
+            try
+            {
+                var loginResult = await LoginUser(email, password);
+                if (loginResult != null && !string.IsNullOrEmpty(loginResult.IdToken))
+                {
+                    var secPage = new SecondPage();
+                    await Navigation.PushAsync(secPage);
+                    EmailEntry.Text = null;
+                    PasswordEntry.Text = null;
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", "Неверный логин или пароль", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
+
+        }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            // Получаем текущее значение переключателя
+            bool isChecked = e.Value;
+
+            // Если переключатель включен, то сохраняем данные пользователя
+            if (isChecked)
+            {
+                Preferences.Set("IsRemembered", true);  // Запоминаем, что пользователя нужно запомнить
+                Preferences.Set("SavedEmail", EmailEntry.Text);  // Сохраняем логин
+                Preferences.Set("SavedPassword", PasswordEntry.Text);  // Сохраняем пароль
+            }
+            else
+            {
+                // Если выключен, удаляем сохранённые данные
+                Preferences.Remove("IsRemembered");
+                Preferences.Remove("SavedEmail");
+                Preferences.Remove("SavedPassword");
+            }
         }
     }
 }

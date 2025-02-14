@@ -8,6 +8,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using Newtonsoft.Json;
 using System.Net.Http;
+using Xamarin.Essentials;
 
 namespace Clens
 {
@@ -56,7 +57,7 @@ namespace Clens
 
             if (!IsValidPassword(password))
             {
-                DisplayAlert("Ошибка", "Пароль должен содержать не менее 8 символов, " +
+                DisplayAlert("Ошибка", "Пароль должен содержать от 8 до 32 символов, " +
                     "включать заглавные и строчные буквы, цифры и специальные символы.", "OK");
                 return false;
             }
@@ -66,7 +67,7 @@ namespace Clens
 
         private bool IsValidPassword(string password)
         {
-            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
+            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$");
             return passwordRequirement.IsMatch(password);
         }
 
@@ -97,6 +98,7 @@ namespace Clens
             if (response.IsSuccessStatusCode)
             {
                 var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+                Preferences.Set("IdToken", firebaseResponse.IdToken);
                 await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 return firebaseResponse;
             }

@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Clens.LensesPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.LensesPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="20">
@@ -15,24 +13,18 @@
                         <Label x:Name="nullDataLabel" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center"  Text="Тут будет написано, когда Вам нужно будет сменить линзы!" TextColor="Black"></Label>
                     </StackLayout>
                 </Frame>
-
                 <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Padding="20">
                     <StackLayout>
                         <StackLayout Margin="0,0,0,10">
                             <Label Text="НАЧАЛЬНАЯ ДАТА:" TextColor="Gray" FontSize="20" />
-                            <DatePicker x:Name="startDate" FontSize="20" Format="dd MMMM yyyy"/>
+                            <DatePicker x:Name="startDate" FontSize="20" Format="dd MMMM yyyy" DateSelected="startDate_DateSelected"/>
                         </StackLayout>
-
                         <StackLayout Margin="0,0,0,10">
                             <Label Text="ЗАМЕНИТЕ ЛИНЗЫ:" TextColor="Gray" FontSize="20" />
                             <Label x:Name="endDate" FontSize="20" TextColor="Black"/>
                         </StackLayout>
-
-
-                        
-
                         <Label Text="ТИП ЛИНЗ:" TextColor="Gray" FontSize="20" Margin="0,5,0,0" />
-                        <Picker x:Name="lensTypePicker" Title="Укажите тип линз" FontSize="20">
+                        <Picker x:Name="lensTypePicker" Title="Укажите тип линз" FontSize="20" SelectedIndexChanged="lensTypePicker_SelectedIndexChanged">
                             <Picker.Items>
                                 <x:String>Однодневные</x:String>
                                 <x:String>Двухнедельные</x:String>
@@ -42,17 +34,13 @@
                             </Picker.Items>
                         </Picker>
                         <Button Text="Снять линзы" x:Name="removeButton" Clicked="removeButton_Clicked"></Button>
-                        <Button Text="Сохранить" x:Name="saveButton" Clicked="saveButton_Clicked_1"></Button>
                         <Label Text="ОЧИСТИТЬ" HorizontalOptions="Center" x:Name="clearLabel"  TextColor="#B5DDA4" FontSize="25">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="clearLabel_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
-                        
                     </StackLayout>
                 </Frame>
-
-                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

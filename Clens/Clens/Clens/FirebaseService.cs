@@ -23,7 +23,7 @@ public class FirebaseService
 
         return items.Select(item => new HistoryItem
         {
-            Id = item.Key, 
+            Id = item.Key,
             StartDate = item.Object.StartDate,
             EndDate = item.Object.EndDate,
             Type = item.Object.Type
@@ -33,5 +33,17 @@ public class FirebaseService
     public async Task DeleteHistoryItem(HistoryItem item)
     {
         await _firebaseClient.Child("History").Child(item.Id).DeleteAsync();
+    }
+
+    public IDisposable ListenToHistoryItems(Action<List<HistoryItem>> onUpdated)
+    {
+        return _firebaseClient
+            .Child("History")
+            .AsObservable<HistoryItem>()
+            .Subscribe(d =>
+            {
+                var items = GetHistoryItems().Result;
+                onUpdated(items);
+            });
     }
 }

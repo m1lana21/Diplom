@@ -9,6 +9,10 @@
             <Setter Property="TextColor" Value="Black"></Setter>
         </Style>
 
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value = "TimesNewRoman"></Setter>
+        </Style>
+
         <!--<ResourceDictionary>
             <Color x:Key="ShellBackgroundColor">White</Color>
             <Color x:Key="ShellForegroundColor">Black</Color>

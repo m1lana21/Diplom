@@ -2,27 +2,32 @@
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Firebase.Database;
-using Firebase.Auth;
-using Firebase.Database.Query;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
+using System.Globalization;
+using Firebase.Database.Query;
 
 namespace Clens
 {
     public partial class LensesPage : ContentPage
     {
         private const string LastSavedKey = "LastSaved";
-        private bool isLoadedFromDb = false;
+        private const string StartDateKey = "StartDate";
+        private const string EndDateKey = "EndDate";
+        private const string TypeKey = "TypeKey";
 
         public LensesPage()
         {
             InitializeComponent();
-
-            if (!isLoadedFromDb && startDate.Date == null)
+            LoadSavedData();
+            if (startDate == null)
             {
-                startDate.Date = DateTime.Now;
+                startDate.Date = DateTime.Now.Date;
             }
+            else
+            {
+                lensTypePicker.SelectedItem = Preferences.Get(TypeKey, string.Empty);
+            }
+            UpdateRemoveButtonState();
         }
 
         protected override void OnAppearing()
@@ -30,12 +35,28 @@ namespace Clens
             base.OnAppearing();
         }
 
-        private async void UpdateReplacementDate(object sender, EventArgs e)
+        private void LoadSavedData()
         {
-            var startDateValue = startDate.Date;
+            if (Preferences.ContainsKey(StartDateKey))
+            {
+                string savedStartDate = Preferences.Get(StartDateKey, DateTime.Now.ToString());
+                startDate.Date = DateTime.Parse(savedStartDate, new CultureInfo("ru-RU"));
+            }
+            else
+            {
+                startDate.Date = DateTime.Now;
+            }
 
-            var selectedLensType = lensTypePicker.SelectedItem?.ToString();
+            if (Preferences.ContainsKey(EndDateKey))
+            {
+                string savedEndDate = Preferences.Get(EndDateKey, string.Empty);
+                endDate.Text = savedEndDate;
+            }
+        }
 
+
+        private void UpdateEndDate(DateTime startDateValue, string selectedLensType)
+        {
             DateTime expectedEndDateValue;
 
             switch (selectedLensType)
@@ -60,35 +81,41 @@ namespace Clens
                     break;
             }
 
-            DateTime realEndDate = DateTime.Today;
-
-            string endDateString = realEndDate.ToString("dd MMMM yyyy");
-            string startDateString = startDateValue.ToString("dd MMMM yyyy");
+            string endDateString = expectedEndDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
             endDate.Text = endDateString;
 
-            countTimeLabel.Text = $"{expectedEndDateValue.Subtract(DateTime.Today).Days}";
+            countTimeLabel.Text = $"{(expectedEndDateValue - DateTime.Today).Days}";
             countTimeLabel.IsVisible = true;
             timeMeasurementLabel.IsVisible = true;
             nullDataLabel.IsVisible = false;
             resetLensesLabel.IsVisible = true;
 
-            if (!Preferences.ContainsKey(LastSavedKey) || Preferences.Get(LastSavedKey, "") != startDateString)
+            Preferences.Set(StartDateKey, startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU")));
+            Preferences.Set(EndDateKey, endDateString);
+            Preferences.Set(TypeKey, selectedLensType);
+        }
+
+        private async void UpdateReplacementDate(object sender, EventArgs e)
+        {
+            var startDateValue = startDate.Date;
+            var selectedLensType = lensTypePicker.SelectedItem?.ToString();
+
+            if (selectedLensType != null)
             {
-                await SaveLensesData(startDateString, selectedLensType, endDateString);
-                Preferences.Set(LastSavedKey, startDateString);
+                UpdateEndDate(startDateValue, selectedLensType);
+                await SaveLensesData(startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU")), selectedLensType);
             }
         }
 
-        private async Task SaveLensesData(string startDate, string type, string endDate)
+        private async Task SaveLensesData(string startDate, string type)
         {
-            var lensesData = new { StartDate = startDate, Type = type, EndDate = endDate, };
+            var realEndDate = DateTime.Today.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
+            var lensesData = new { StartDate = startDate, Type = type, EndDate = realEndDate };
             var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
-            await firebase
-                .Child("History")
-                .PostAsync(lensesData);
+            await firebase.Child("History").PostAsync(lensesData);
         }
 
-        public void clearInfo()
+        public void ClearInfo()
         {
             startDate.Date = DateTime.Today;
             endDate.Text = null;
@@ -97,72 +124,59 @@ namespace Clens
             timeMeasurementLabel.IsVisible = false;
             nullDataLabel.IsVisible = true;
             resetLensesLabel.IsVisible = false;
+            UpdateRemoveButtonState();
         }
 
         private async void clearLabel_Tapped(object sender, EventArgs e)
         {
             bool answer = await DisplayAlert("Подтверждение", "Вы действительно хотите удалить данные о линзах?", "Да", "Нет");
-
             if (answer)
             {
-                clearInfo();
+                ClearInfo();
             }
         }
 
-        private async void removeButton_Clicked(object sender, EventArgs e)
+        private void removeButton_Clicked(object sender, EventArgs e)
         {
             if (lensTypePicker.SelectedItem != null)
             {
                 UpdateReplacementDate(null, null);
-                clearInfo();
+                ClearInfo();
             }
-            else await DisplayAlert("Ошибка", "Укажите тип линз!", "OK");
         }
 
-        private async void saveButton_Clicked_1(object sender, EventArgs e)
+        private void CalculateEndDate()
         {
             if (lensTypePicker.SelectedItem != null)
             {
                 var startDateValue = startDate.Date;
-
                 var selectedLensType = lensTypePicker.SelectedItem?.ToString();
+                UpdateEndDate(startDateValue, selectedLensType);
+            }
+        }
 
-                DateTime endDateValue;
-                switch (selectedLensType)
-                {
-                    case "Однодневные":
-                        endDateValue = startDateValue.AddDays(1);
-                        break;
-                    case "Двухнедельные":
-                        endDateValue = startDateValue.AddDays(14);
-                        break;
-                    case "Одномесячные":
-                        endDateValue = startDateValue.AddMonths(1);
-                        break;
-                    case "Полугодовые":
-                        endDateValue = startDateValue.AddMonths(6);
-                        break;
-                    case "Годовые":
-                        endDateValue = startDateValue.AddYears(1);
-                        break;
-                    default:
-                        endDateValue = startDateValue;
-                        break;
-                }
+        private void lensTypePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalculateEndDate();
+            UpdateRemoveButtonState();
+        }
 
-                string endDateString = endDateValue.ToString("dd MMMM yyyy");
-                string startDateString = startDateValue.ToString("dd MMMM yyyy");
-                endDate.Text = endDateString;
+        private void startDate_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            if (lensTypePicker.SelectedItem != null) CalculateEndDate();
+        }
 
-                countTimeLabel.Text = $"{endDateValue.Subtract(DateTime.Today).Days}";
-                countTimeLabel.IsVisible = true;
-                timeMeasurementLabel.IsVisible = true;
-                nullDataLabel.IsVisible = false;
-                resetLensesLabel.IsVisible = true;
+        private void UpdateRemoveButtonState()
+        {
+            if (lensTypePicker.SelectedItem == null)
+            {
+                removeButton.IsEnabled = false;
+                removeButton.BackgroundColor = Color.Gray;
             }
             else
             {
-                await DisplayAlert("Ошибка", "укажите тип линз!", "OK");
+                removeButton.IsEnabled = true;
+                removeButton.BackgroundColor = Color.FromHex("#B5DDA4");
             }
         }
     }

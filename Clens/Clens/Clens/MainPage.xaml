@@ -10,7 +10,7 @@
                     <Button Text="Войти" BackgroundColor="#B5DDA4" FontSize="25"  Clicked="Button_Clicked"></Button>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Label Text="Запомнить меня" FontSize="17" TextColor="Gray" Margin="5"></Label>
-                        <Switch IsToggled="False" OnColor="#B5DDA4" ThumbColor="#B5DDA4"></Switch>
+                        <Switch IsToggled="False" OnColor="#B5DDA4" ThumbColor="#B5DDA4" Toggled="Switch_Toggled"></Switch>
                     </StackLayout>
                 </StackLayout>
             </Frame>

@@ -727,3 +727,4 @@ D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ConvertReso
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
+D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\lens.png

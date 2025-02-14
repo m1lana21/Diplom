@@ -1,14 +1,9 @@
-﻿using LiteDB;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Firebase.Database;
-using Microsoft.AspNetCore.Http;
 using System.Globalization;
 using Rg.Plugins.Popup.Services;
 namespace Clens
@@ -22,7 +17,7 @@ namespace Clens
         {
             InitializeComponent();
             _firebaseService = new FirebaseService();
-            LoadHistoryItems();
+            _ = LoadHistoryItems();
         }
 
         protected override void OnAppearing()
@@ -54,13 +49,13 @@ namespace Clens
                 get
                 {
                     DateTime parsedDate;
-                    if (DateTime.TryParseExact(StartDate, "dd MMMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+                    if (DateTime.TryParseExact(StartDate, "dd MMMM yyyy", CultureInfo.GetCultureInfo("ru-RU"), DateTimeStyles.None, out parsedDate))
                     {
                         return parsedDate;
                     }
                     else
                     {
-                        return null; 
+                        return null;
                     }
                 }
             }
@@ -70,13 +65,13 @@ namespace Clens
                 get
                 {
                     DateTime parsedDate;
-                    if (DateTime.TryParseExact(EndDate, "dd MMMM yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+                    if (DateTime.TryParseExact(EndDate, "dd MMMM yyyy", CultureInfo.GetCultureInfo("ru-RU"), DateTimeStyles.None, out parsedDate))
                     {
                         return parsedDate;
                     }
                     else
                     {
-                        return null; 
+                        return null;
                     }
                 }
             }
@@ -89,7 +84,7 @@ namespace Clens
                     {
                         return (EndDateParsed.Value - StartDateParsed.Value).Days.ToString();
                     }
-                    return null;
+                    return "Не высчитывается";
                 }
             }
         }
@@ -101,7 +96,7 @@ namespace Clens
             var myPopup = new EditPage(historyItem);
             myPopup.ItemEdited += async () =>
             {
-                await LoadHistoryItems(); 
+                await LoadHistoryItems();
             };
             await PopupNavigation.Instance.PushAsync(myPopup);
         }
@@ -118,7 +113,7 @@ namespace Clens
                 {
                     await _firebaseService.DeleteHistoryItem(historyItem);
 
-                    LoadHistoryItems();
+                    await LoadHistoryItems();
                 }
             }
             else
