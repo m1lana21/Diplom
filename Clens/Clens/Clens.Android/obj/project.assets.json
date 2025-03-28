@@ -705,6 +705,26 @@
           }
         }
       },
+      "Plugin.LocalNotification/5.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Core": "1.3.2.1",
+          "Xamarin.AndroidX.Work.Runtime": "2.4.0.1"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid10.0/Plugin.LocalNotification.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid10.0/Plugin.LocalNotification.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Portable.BouncyCastle/1.8.5": {
         "type": "package",
         "compile": {
@@ -2160,6 +2180,28 @@
           "buildTransitive/monoandroid90/Xamarin.AndroidX.Lifecycle.Runtime.targets": {}
         }
       },
+      "Xamarin.AndroidX.Lifecycle.Service/2.2.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.2.0.4"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.targets": {}
+        }
+      },
       "Xamarin.AndroidX.Lifecycle.ViewModel/2.3.1.1": {
         "type": "package",
         "dependencies": {
@@ -2541,6 +2583,53 @@
           "buildTransitive/monoandroid90/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
+      "Xamarin.AndroidX.Room.Common/2.2.5.6": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.1.0.8"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Room.Common.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Room.Common.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Room.Common.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Room.Runtime/2.2.5.6": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Arch.Core.Runtime": "2.1.0.7",
+          "Xamarin.AndroidX.Room.Common": "2.2.5.6",
+          "Xamarin.AndroidX.Sqlite": "2.1.0.6",
+          "Xamarin.AndroidX.Sqlite.Framework": "2.1.0.6"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Room.Runtime.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Room.Runtime.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Room.Runtime.targets": {}
+        }
+      },
       "Xamarin.AndroidX.SavedState/1.1.0.2": {
         "type": "package",
         "dependencies": {
@@ -2601,6 +2690,51 @@
         },
         "build": {
           "buildTransitive/monoandroid90/Xamarin.AndroidX.SlidingPaneLayout.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Sqlite/2.1.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.1.0.8"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Sqlite.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Sqlite.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Sqlite.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Sqlite.Framework/2.1.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.1.0.8",
+          "Xamarin.AndroidX.Sqlite": "2.1.0.6"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.targets": {}
         }
       },
       "Xamarin.AndroidX.SwipeRefreshLayout/1.1.0.3": {
@@ -2851,6 +2985,31 @@
           "buildTransitive/monoandroid90/Xamarin.AndroidX.ViewPager2.targets": {}
         }
       },
+      "Xamarin.AndroidX.Work.Runtime/2.4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Lifecycle.LiveData": "2.2.0.4",
+          "Xamarin.AndroidX.Lifecycle.Service": "2.2.0.4",
+          "Xamarin.AndroidX.Room.Runtime": "2.2.5.6",
+          "Xamarin.Google.Guava.ListenableFuture": "1.0.0.2"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.AndroidX.Work.Runtime.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.AndroidX.Work.Runtime.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "buildTransitive/monoandroid90/Xamarin.AndroidX.Work.Runtime.targets": {}
+        }
+      },
       "Xamarin.Essentials/1.7.0": {
         "type": "package",
         "dependencies": {
@@ -2989,6 +3148,7 @@
           "FirebaseAuthentication.net": "4.1.0",
           "FirebaseDatabase.net": "4.2.0",
           "Newtonsoft.Json": "13.0.3",
+          "Plugin.LocalNotification": "5.2.0",
           "Rg.Plugins.Popup": "2.1.0",
           "Xamarin.Essentials": "1.8.1",
           "Xamarin.Forms": "5.0.0.2662"
@@ -3617,6 +3777,26 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "Plugin.LocalNotification/5.2.0": {
+      "sha512": "5F4CXTSMtiJe6bw2EqFgZ2qtQuQxqdRdA0NwjbnX9tB9/q7KN/I7NQFU7DqBIOFiylEFJe34tl97YM6XMFWsxg==",
+      "type": "package",
+      "path": "plugin.localnotification/5.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/monoandroid10.0/Plugin.LocalNotification.dll",
+        "lib/monoandroid10.0/Plugin.LocalNotification.xml",
+        "lib/netstandard2.0/Plugin.LocalNotification.dll",
+        "lib/netstandard2.0/Plugin.LocalNotification.xml",
+        "lib/netstandard2.1/Plugin.LocalNotification.dll",
+        "lib/netstandard2.1/Plugin.LocalNotification.xml",
+        "lib/xamarinios10/Plugin.LocalNotification.dll",
+        "lib/xamarinios10/Plugin.LocalNotification.xml",
+        "plugin.localnotification.5.2.0.nupkg.sha512",
+        "plugin.localnotification.nuspec"
       ]
     },
     "Portable.BouncyCastle/1.8.5": {
@@ -6404,6 +6584,23 @@
         "xamarin.androidx.lifecycle.runtime.nuspec"
       ]
     },
+    "Xamarin.AndroidX.Lifecycle.Service/2.2.0.4": {
+      "sha512": "H7PUBR8Cht5aNSHMh99/svu/vJwfVq9DVHcWowzggEyY3nYkw2XXff7c91HLCYGqstA5aPm+3vW5L9+LXUH28w==",
+      "type": "package",
+      "path": "xamarin.androidx.lifecycle.service/2.2.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "aar/androidx.lifecycle.lifecycle-service.aar",
+        "build/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.targets",
+        "lib/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Lifecycle.Service.pdb",
+        "xamarin.androidx.lifecycle.service.2.2.0.4.nupkg.sha512",
+        "xamarin.androidx.lifecycle.service.nuspec"
+      ]
+    },
     "Xamarin.AndroidX.Lifecycle.ViewModel/2.3.1.1": {
       "sha512": "FR3CoiOgMbeQqoc11veCu+uCbVzQFueMMFFBqRhe4v6BBbJVhTnI2LWz852qSWQge0D/2bUFPvavOgIEu2yNFA==",
       "type": "package",
@@ -6727,6 +6924,41 @@
         "xamarin.androidx.recyclerview.nuspec"
       ]
     },
+    "Xamarin.AndroidX.Room.Common/2.2.5.6": {
+      "sha512": "JNWPXXFhYrH4V2MPAhwP32+vP95xsPEMKglGQPEMX5+iTmYVR8++1P1PObET46EKzrjzJfkDgZJhL7EN3F4O8A==",
+      "type": "package",
+      "path": "xamarin.androidx.room.common/2.2.5.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "build/monoandroid90/Xamarin.AndroidX.Room.Common.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Room.Common.targets",
+        "jar/androidx.room.room-common.jar",
+        "lib/monoandroid90/Xamarin.AndroidX.Room.Common.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Room.Common.pdb",
+        "xamarin.androidx.room.common.2.2.5.6.nupkg.sha512",
+        "xamarin.androidx.room.common.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Room.Runtime/2.2.5.6": {
+      "sha512": "WvysS7BCPGa/2lz0N51mdhM0pw+YgY9h41PaTOM4GINxc7R6ar6XrJwg2NzgGFgC4m/KVkp0nlE1izqolR7CYA==",
+      "type": "package",
+      "path": "xamarin.androidx.room.runtime/2.2.5.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "aar/androidx.room.room-runtime.aar",
+        "build/monoandroid90/Xamarin.AndroidX.Room.Runtime.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Room.Runtime.targets",
+        "lib/monoandroid90/Xamarin.AndroidX.Room.Runtime.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Room.Runtime.pdb",
+        "proguard/proguard.txt",
+        "xamarin.androidx.room.runtime.2.2.5.6.nupkg.sha512",
+        "xamarin.androidx.room.runtime.nuspec"
+      ]
+    },
     "Xamarin.AndroidX.SavedState/1.1.0.2": {
       "sha512": "lzRcF0tJE5TqzNxj4a/X/48MlOaYDsluvjVRxFliykGwEJ3WQ/QiTfATXJ6ho4dGefPXjWLP4x9KGzI5eSQ/xQ==",
       "type": "package",
@@ -6772,6 +7004,40 @@
         "lib/net6.0-android30.0/Xamarin.AndroidX.SlidingPaneLayout.xml",
         "xamarin.androidx.slidingpanelayout.1.1.0.3.nupkg.sha512",
         "xamarin.androidx.slidingpanelayout.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Sqlite/2.1.0.6": {
+      "sha512": "76NP4w7gKosujI1ntv5CAT62gNiKJ3d+tUqrGySun/6jZpDEjAelp0jF1oN2mlJ0HuWGy82HiXCAfRtLxW+r2Q==",
+      "type": "package",
+      "path": "xamarin.androidx.sqlite/2.1.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "aar/androidx.sqlite.sqlite.aar",
+        "build/monoandroid90/Xamarin.AndroidX.Sqlite.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Sqlite.targets",
+        "lib/monoandroid90/Xamarin.AndroidX.Sqlite.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Sqlite.pdb",
+        "xamarin.androidx.sqlite.2.1.0.6.nupkg.sha512",
+        "xamarin.androidx.sqlite.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Sqlite.Framework/2.1.0.6": {
+      "sha512": "f2cf09GKNfsznP8Xj/Ci2G+PVHKgQjYeM48uLQ6P3PQJBXxZHMgptQYNf/4pacOyU8mR3C1PbKhm5OgMfYktaw==",
+      "type": "package",
+      "path": "xamarin.androidx.sqlite.framework/2.1.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "aar/androidx.sqlite.sqlite-framework.aar",
+        "build/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.targets",
+        "lib/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Sqlite.Framework.pdb",
+        "xamarin.androidx.sqlite.framework.2.1.0.6.nupkg.sha512",
+        "xamarin.androidx.sqlite.framework.nuspec"
       ]
     },
     "Xamarin.AndroidX.SwipeRefreshLayout/1.1.0.3": {
@@ -6959,6 +7225,24 @@
         "lib/net6.0-android30.0/Xamarin.AndroidX.ViewPager2.xml",
         "xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
         "xamarin.androidx.viewpager2.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Work.Runtime/2.4.0.1": {
+      "sha512": "3dJPiKOZDyT05exiZMYmsgB3MT6VtQNJJ+ICAZhOWLop7hP9oUrR99ZW6c73IWYNyVTtxf5Yk3xr8Sj1Nxm7pQ==",
+      "type": "package",
+      "path": "xamarin.androidx.work.runtime/2.4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "aar/androidx.work.work-runtime.aar",
+        "build/monoandroid90/Xamarin.AndroidX.Work.Runtime.targets",
+        "buildTransitive/monoandroid90/Xamarin.AndroidX.Work.Runtime.targets",
+        "lib/monoandroid90/Xamarin.AndroidX.Work.Runtime.dll",
+        "lib/monoandroid90/Xamarin.AndroidX.Work.Runtime.pdb",
+        "proguard/proguard.txt",
+        "xamarin.androidx.work.runtime.2.4.0.1.nupkg.sha512",
+        "xamarin.androidx.work.runtime.nuspec"
       ]
     },
     "Xamarin.Essentials/1.7.0": {
@@ -7269,6 +7553,7 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v13.0": [
       "Clens >= 1.0.0",
+      "Plugin.LocalNotification >= 5.2.0",
       "Xamarin.Essentials >= 1.7.0",
       "Xamarin.Forms >= 5.0.0.2196"
     ]
@@ -7280,11 +7565,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+      "projectUniqueName": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
       "projectName": "Clens.Android",
-      "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+      "projectPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\obj\\",
+      "outputPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -7305,8 +7590,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj": {
-              "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj"
+            "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj": {
+              "projectPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj"
             }
           }
         }
@@ -7320,6 +7605,10 @@
     "frameworks": {
       "monoandroid13.0": {
         "dependencies": {
+          "Plugin.LocalNotification": {
+            "target": "Package",
+            "version": "[5.2.0, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.7.0, )"

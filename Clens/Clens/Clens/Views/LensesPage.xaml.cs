@@ -5,6 +5,8 @@ using Firebase.Database;
 using System.Threading.Tasks;
 using System.Globalization;
 using Firebase.Database.Query;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 
 namespace Clens
 {
@@ -28,6 +30,17 @@ namespace Clens
                 lensTypePicker.SelectedItem = Preferences.Get(TypeKey, string.Empty);
             }
             UpdateRemoveButtonState();
+        }
+
+        public string GetCurrentUserUid()
+        {
+            var idToken = Preferences.Get("IdToken", "");
+            if (string.IsNullOrEmpty(idToken)) return null;
+
+            // Разбираем JWT-токен
+            var jwtHandler = new JwtSecurityTokenHandler();
+            var tokenS = jwtHandler.ReadJwtToken(idToken);
+            return tokenS.Claims.First(c => c.Type == "user_id")?.Value;
         }
 
         protected override void OnAppearing()

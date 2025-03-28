@@ -25,11 +25,11 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=638702573554215797
+_nugetassetstimestamp=638783648597823454
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
 androidmanifestplaceholders=
-projectfullpath=d:\study\диплом\clens\clens\clens.android\clens.android.csproj
+projectfullpath=d:\study\диплом\diplom-main\clens\clens\clens.android\clens.android.csproj

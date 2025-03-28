@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj": {}
+    "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj": {}
   },
   "projects": {
-    "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj": {
+    "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+        "projectUniqueName": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
         "projectName": "Clens.Android",
-        "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+        "projectPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\obj\\",
+        "outputPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid13.0": {
             "projectReferences": {
-              "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj": {
-                "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj"
+              "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj": {
+                "projectPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj"
               }
             }
           }
@@ -47,6 +47,10 @@
       "frameworks": {
         "monoandroid13.0": {
           "dependencies": {
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.0, )"
@@ -59,14 +63,14 @@
         }
       }
     },
-    "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj": {
+    "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj",
+        "projectUniqueName": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj",
         "projectName": "Clens",
-        "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj",
+        "projectPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\obj\\",
+        "outputPath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -130,6 +134,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Plugin.LocalNotification": {
+              "target": "Package",
+              "version": "[5.2.0, )"
             },
             "Rg.Plugins.Popup": {
               "target": "Package",

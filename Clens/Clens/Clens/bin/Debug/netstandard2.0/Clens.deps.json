@@ -15,6 +15,7 @@
           "FirebaseDatabase.net": "4.2.0",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
+          "Plugin.LocalNotification": "5.2.0",
           "Rg.Plugins.Popup": "2.1.0",
           "Xamarin.Essentials": "1.8.1",
           "Xamarin.Forms": "5.0.0.2662"
@@ -525,6 +526,14 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.1.20722"
+          }
+        }
+      },
+      "Plugin.LocalNotification/5.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.LocalNotification.dll": {
+            "assemblyVersion": "5.2.0.0",
+            "fileVersion": "5.2.0.0"
           }
         }
       },
@@ -1684,6 +1693,13 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "Plugin.LocalNotification/5.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5F4CXTSMtiJe6bw2EqFgZ2qtQuQxqdRdA0NwjbnX9tB9/q7KN/I7NQFU7DqBIOFiylEFJe34tl97YM6XMFWsxg==",
+      "path": "plugin.localnotification/5.2.0",
+      "hashPath": "plugin.localnotification.5.2.0.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.8.5": {
       "type": "package",

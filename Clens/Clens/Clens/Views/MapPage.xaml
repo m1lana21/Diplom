@@ -7,6 +7,7 @@
             <Label Text="ТУТ БУДЕТ КАРТА" FontSize="25"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="Уведы" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

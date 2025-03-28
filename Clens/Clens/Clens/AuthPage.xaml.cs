@@ -107,6 +107,8 @@ namespace Clens
                 await DisplayAlert("Ошибка", "Укажите действительный email!", "OK");
                 return null;
             }
+
         }
+
     }
 }

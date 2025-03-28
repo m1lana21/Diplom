@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clens.Android", "Clens\Clens.Android\Clens.Android.csproj", "{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clens", "Clens\Clens\Clens.csproj", "{B5275DBD-57BC-4F79-9F81-30EEB6646825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clens", "Clens\Clens\Clens.csproj", "{B5275DBD-57BC-4F79-9F81-30EEB6646825}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

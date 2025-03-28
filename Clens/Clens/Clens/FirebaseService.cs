@@ -2,8 +2,10 @@
 using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using static Clens.HistoryPage;
 
 public class FirebaseService
