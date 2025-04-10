@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Clens")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a06457c43ce5417f13a5bcee4dbe085b1d8769c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dab39f6dc8321c0847d354b15e51ab5bbffb64fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Clens")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Clens")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

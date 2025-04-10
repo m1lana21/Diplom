@@ -6,7 +6,7 @@
     <TabbedPage.Children>
         <local:LensesPage Title="Линзы" IconImageSource="lenses.png"/>
         <local:HistoryPage Title="История" IconImageSource="history.png"/>
-        <local:MapPage Title="Карты" IconImageSource="map.png"/>
+        <!--<local:MapPage Title="Карты" IconImageSource="map.png"/>-->
         <local:AccountPage Title="Профиль" IconImageSource="account.png"/>
     </TabbedPage.Children>
 </TabbedPage>
