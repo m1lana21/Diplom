@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e4xg/L1mZSo=",
+  "dgSpecHash": "uLxqvANXAv4=",
   "success": true,
-  "projectFilePath": "D:\\Study\\Диплом\\Diplom-main\\Clens\\Clens\\Clens\\Clens.csproj",
+  "projectFilePath": "D:\\Study\\Диплом\\Diplom\\Diplom\\Clens\\Clens\\Clens\\Clens.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\acr.userdialogs\\8.0.0\\acr.userdialogs.8.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\firebaseauth\\2.0.6\\firebaseauth.2.0.6.nupkg.sha512",

@@ -21,10 +21,10 @@ namespace Clens
 			InitializeComponent ();
 		}
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void loginButton_Clicked(object sender, EventArgs e)
         {
             var mainPage = new MainPage();
-            await Navigation.PushAsync(mainPage); //тут сделать возврат на предыдущую страницу
+            await Navigation.PopAsync();
         }
 
         private async void registerButton_Clicked(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Clens
             if (!IsValidPassword(password))
             {
                 DisplayAlert("Ошибка", "Пароль должен содержать от 8 до 32 символов, " +
-                    "включать заглавные и строчные буквы, цифры и специальные символы.", "OK");
+                    "включать заглавные, строчные буквы и цифры", "OK");
                 return false;
             }
 
@@ -67,7 +67,7 @@ namespace Clens
 
         private bool IsValidPassword(string password)
         {
-            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$");
+            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z]){8,32}$");
             return passwordRequirement.IsMatch(password);
         }
 
@@ -98,7 +98,10 @@ namespace Clens
             if (response.IsSuccessStatusCode)
             {
                 var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
-                Preferences.Set("IdToken", firebaseResponse.IdToken);
+
+                // Сохраняем токен в SecureStorage
+                await SecureStorage.SetAsync("UserToken", firebaseResponse.IdToken);
+
                 await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 return firebaseResponse;
             }

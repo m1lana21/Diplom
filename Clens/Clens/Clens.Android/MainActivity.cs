@@ -24,6 +24,7 @@ namespace Clens.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             LoadApplication(new App());
             NotificationCenter.NotifyNotificationTapped(Intent);
+
         }
 
         protected override void OnNewIntent(Intent intent)

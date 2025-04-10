@@ -6,6 +6,8 @@ using Xamarin.Forms.Xaml;
 using Firebase.Database;
 using System.Globalization;
 using Rg.Plugins.Popup.Services;
+using System.Security.Cryptography;
+using Xamarin.Essentials;
 namespace Clens
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,6 +25,7 @@ namespace Clens
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
         }
 
         private async Task LoadHistoryItems()

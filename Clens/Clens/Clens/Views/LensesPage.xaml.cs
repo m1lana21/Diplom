@@ -7,6 +7,9 @@ using System.Globalization;
 using Firebase.Database.Query;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Diagnostics;
+using Plugin.LocalNotification;
+using System.Security.Cryptography;
 
 namespace Clens
 {
@@ -16,10 +19,12 @@ namespace Clens
         private const string StartDateKey = "StartDate";
         private const string EndDateKey = "EndDate";
         private const string TypeKey = "TypeKey";
+        private bool _notificationSent = false;
 
         public LensesPage()
         {
             InitializeComponent();
+            
             LoadSavedData();
             if (startDate == null)
             {
@@ -29,18 +34,15 @@ namespace Clens
             {
                 lensTypePicker.SelectedItem = Preferences.Get(TypeKey, string.Empty);
             }
+
             UpdateRemoveButtonState();
-        }
 
-        public string GetCurrentUserUid()
-        {
-            var idToken = Preferences.Get("IdToken", "");
-            if (string.IsNullOrEmpty(idToken)) return null;
-
-            // Разбираем JWT-токен
-            var jwtHandler = new JwtSecurityTokenHandler();
-            var tokenS = jwtHandler.ReadJwtToken(idToken);
-            return tokenS.Claims.First(c => c.Type == "user_id")?.Value;
+            Device.StartTimer(TimeSpan.FromSeconds(15), () =>
+            {
+                Debug.WriteLine("Таймер сработал в " + DateTime.Now);
+                CheckCountTimeLabel();
+                return true;
+            });
         }
 
         protected override void OnAppearing()
@@ -103,6 +105,18 @@ namespace Clens
             nullDataLabel.IsVisible = false;
             resetLensesLabel.IsVisible = true;
 
+            if (Convert.ToInt32(countTimeLabel.Text) <= 0)
+            {
+                nullDataLabel.Text = "Пора сменить линзы!";
+                Debug.WriteLine($"Дней осталось: {countTimeLabel.Text}");
+                nullDataLabel.FontSize = 24;
+                nullDataLabel.IsVisible = true;
+                countTimeLabel.IsVisible = false;
+                timeMeasurementLabel.IsVisible = false;
+                resetLensesLabel.IsVisible = false;
+                
+            }
+
             Preferences.Set(StartDateKey, startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU")));
             Preferences.Set(EndDateKey, endDateString);
             Preferences.Set(TypeKey, selectedLensType);
@@ -124,8 +138,11 @@ namespace Clens
         {
             var realEndDate = DateTime.Today.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
             var lensesData = new { StartDate = startDate, Type = type, EndDate = realEndDate };
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
             var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
-            await firebase.Child("History").PostAsync(lensesData);
+            await firebase.Child("Users").Child(userUid).Child("History").PostAsync(lensesData);
+            
         }
 
         public void ClearInfo()
@@ -190,6 +207,42 @@ namespace Clens
             {
                 removeButton.IsEnabled = true;
                 removeButton.BackgroundColor = Color.FromHex("#B5DDA4");
+            }
+        }
+
+        private void CheckCountTimeLabel()
+        {
+            try
+            {
+                if (_notificationSent) return;
+                if (countTimeLabel == null || string.IsNullOrWhiteSpace(countTimeLabel.Text))
+                    return;
+
+                if (int.TryParse(countTimeLabel.Text, out int daysLeft) && daysLeft <= 0)
+                {
+                    var notification = new NotificationRequest
+                    {
+                        NotificationId = 1001,
+                        Title = "Напоминание",
+                        Description = "Пора сменить линзы! Срок носки истёк.",
+                        BadgeNumber = 1,
+                        NotifyTime = DateTime.Now.AddSeconds(5),
+                        Android =
+                {
+                    Ongoing = true,
+                    Priority = (NotificationPriority)1
+                },
+                        
+                    };
+
+                    NotificationCenter.Current.Show(notification);
+                    _notificationSent = true;
+                    Debug.WriteLine("Уведомление запланировано");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка: {ex}");
             }
         }
     }

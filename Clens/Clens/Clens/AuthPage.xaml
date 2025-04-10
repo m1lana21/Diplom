@@ -15,7 +15,7 @@
             </RelativeLayout>
             <Button Text="Зарегистрироваться" Margin="0,20,0,0" x:Name="registerButton" Clicked="registerButton_Clicked"/>
             <Label Text="Уже есть аккаунт?" FontSize="14" HorizontalOptions="Center" TextColor="#4A4A4A" Margin="0,20,0,0"/>
-            <Button Text="Войти" Clicked="Button_Clicked"/>
+            <Button Text="Войти" x:Name="loginButton" Clicked="loginButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

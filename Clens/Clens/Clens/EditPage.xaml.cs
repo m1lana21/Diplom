@@ -27,6 +27,8 @@ namespace Clens
         {
             _firebaseClient = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
             var itemKey = selectedItem.Id;
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
 
             selectedItem.Type = lensTypePicker.SelectedItem.ToString();
             selectedItem.StartDate = startDate.Date.ToString("dd MMMM yyyy");
@@ -46,6 +48,8 @@ namespace Clens
                 };
 
                 await _firebaseClient
+                    .Child("Users")
+                    .Child(userUid)
                     .Child("History")
                     .Child(itemKey)
                     .PutAsync(itemToSave);

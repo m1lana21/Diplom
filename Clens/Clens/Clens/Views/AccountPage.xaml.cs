@@ -32,19 +32,20 @@ namespace Clens
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            var confirmExit = await DisplayAlert("Выход из аккаунта", "Вы действительно хотите выйти?", "Да", "Нет");
+            var confirmExit = await DisplayAlert("Выход", "Вы действительно хотите выйти?", "Да", "Нет");
 
             if (confirmExit)
             {
-                Preferences.Clear();
+                // Очищаем только авторизационные данные
+                SecureStorage.Remove("UserToken");
+                Preferences.Set("IsRemembered", false);
 
-                var navigationPage = new NavigationPage(new MainPage())
+                // Создаем новую навигационную цепочку
+                Application.Current.MainPage = new NavigationPage(new MainPage())
                 {
                     BarBackgroundColor = Color.FromHex("#B5DDA4"),
-                    BarTextColor = Color.Black,
+                    BarTextColor = Color.Black
                 };
-
-                await Navigation.PopToRootAsync();
             }
         }
 
