@@ -5,7 +5,7 @@
             <RelativeLayout HorizontalOptions="Center">
                 <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
                     <StackLayout>
-                        <Label Text="Регистрация" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#4A4A4A"/>
+                        <Label Text="Регистрация" FontSize="32"  HorizontalOptions="Center" TextColor="#4A4A4A"/>
                         <Entry Placeholder="Логин" FontSize="18" Margin="0,20,0,0" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="loginEntry"/>
                         <Entry Placeholder="Электронная почта" FontSize="18" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="emailEntry"/>
                         <Entry Placeholder="Пароль" IsPassword="True" FontSize="18" HeightRequest="50" BackgroundColor="White" TextColor="#4A4A4A" PlaceholderColor="#A9A9A9" x:Name="passwordEntry"/>

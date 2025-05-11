@@ -1,3 +1,6 @@
+Clens.Droid.LensCheckService, Clens.Android;crc6461d5c3b7181a4f73.LensCheckService
+Clens.Droid.LensCheckService;crc6461d5c3b7181a4f73.LensCheckService
+clens.droid.LensCheckService;crc6461d5c3b7181a4f73.LensCheckService
 Clens.Droid.MainActivity, Clens.Android;crc6461d5c3b7181a4f73.MainActivity
 Clens.Droid.MainActivity;crc6461d5c3b7181a4f73.MainActivity
 clens.droid.MainActivity;crc6461d5c3b7181a4f73.MainActivity

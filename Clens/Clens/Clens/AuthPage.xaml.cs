@@ -67,7 +67,8 @@ namespace Clens
 
         private bool IsValidPassword(string password)
         {
-            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z]){8,32}$");
+            var passwordRequirement = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,24}$");
+
             return passwordRequirement.IsMatch(password);
         }
 

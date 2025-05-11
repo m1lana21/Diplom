@@ -10,6 +10,7 @@ using System.Linq;
 using System.Diagnostics;
 using Plugin.LocalNotification;
 using System.Security.Cryptography;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace Clens
 {
@@ -17,6 +18,7 @@ namespace Clens
     {
         private const string LastSavedKey = "LastSaved";
         private const string StartDateKey = "StartDate";
+        private const string StartDateKeyForPush = "StartDateForPush";
         private const string EndDateKey = "EndDate";
         private const string TypeKey = "TypeKey";
         private bool _notificationSent = false;
@@ -24,7 +26,6 @@ namespace Clens
         public LensesPage()
         {
             InitializeComponent();
-            
             LoadSavedData();
             if (startDate == null)
             {
@@ -36,13 +37,6 @@ namespace Clens
             }
 
             UpdateRemoveButtonState();
-
-            Device.StartTimer(TimeSpan.FromSeconds(15), () =>
-            {
-                Debug.WriteLine("Таймер сработал в " + DateTime.Now);
-                CheckCountTimeLabel();
-                return true;
-            });
         }
 
         protected override void OnAppearing()
@@ -66,6 +60,10 @@ namespace Clens
             {
                 string savedEndDate = Preferences.Get(EndDateKey, string.Empty);
                 endDate.Text = savedEndDate;
+            }
+            else
+            {
+                endDate.Text = null; // Если нет, оставляем пустым
             }
         }
 
@@ -117,9 +115,13 @@ namespace Clens
                 
             }
 
+            StartLensCheckService();
             Preferences.Set(StartDateKey, startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU")));
+            DependencyService.Get<IPreferenceService>()?.SaveStartDate(startDateValue.ToString("o")); // ISO 8601
             Preferences.Set(EndDateKey, endDateString);
             Preferences.Set(TypeKey, selectedLensType);
+            Debug.WriteLine($"StartDateKey {startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"))}, StartDateKeyForPush {startDateValue.ToString("o")}, TypeKey {selectedLensType}");
+            
         }
 
         private async void UpdateReplacementDate(object sender, EventArgs e)
@@ -148,13 +150,31 @@ namespace Clens
         public void ClearInfo()
         {
             startDate.Date = DateTime.Today;
-            endDate.Text = null;
-            lensTypePicker.SelectedItem = null;
+            endDate.Text = null;  
+            lensTypePicker.SelectedItem = null; 
             countTimeLabel.IsVisible = false;
             timeMeasurementLabel.IsVisible = false;
             nullDataLabel.IsVisible = true;
             resetLensesLabel.IsVisible = false;
+
+            Preferences.Remove("StartDateKey");
+            Preferences.Remove("StartDateKeyForPush");
+            Preferences.Remove(EndDateKey); 
+            Preferences.Remove("TypeKey");
+
+#if ANDROID
+var prefs = Android.App.Application.Context.GetSharedPreferences("LensPrefs", Android.Content.FileCreationMode.Private);
+var editor = prefs.Edit();
+editor.Clear();
+editor.Apply();
+#endif
+
+            nullDataLabel.Text = "Тут будет написано, когда Вам нужно будет сменить линзы!";
+
             UpdateRemoveButtonState();
+
+            LoadSavedData();
+            StopLensCheckService();
         }
 
         private async void clearLabel_Tapped(object sender, EventArgs e)
@@ -163,6 +183,7 @@ namespace Clens
             if (answer)
             {
                 ClearInfo();
+                NotificationCenter.Current.Cancel(1234);
             }
         }
 
@@ -172,6 +193,7 @@ namespace Clens
             {
                 UpdateReplacementDate(null, null);
                 ClearInfo();
+                NotificationCenter.Current.Cancel(1234);
             }
         }
 
@@ -210,40 +232,23 @@ namespace Clens
             }
         }
 
-        private void CheckCountTimeLabel()
+        void StopLensCheckService()
         {
-            try
-            {
-                if (_notificationSent) return;
-                if (countTimeLabel == null || string.IsNullOrWhiteSpace(countTimeLabel.Text))
-                    return;
+#if ANDROID
+    Plugin.LocalNotification.NotificationCenter.Current.Cancel(1234);
+    var context = Android.App.Application.Context;
+    var intent = new Android.Content.Intent(context, typeof(Clens.Droid.LensCheckService));
+    context.StopService(intent);
+#endif
+        }
 
-                if (int.TryParse(countTimeLabel.Text, out int daysLeft) && daysLeft <= 0)
-                {
-                    var notification = new NotificationRequest
-                    {
-                        NotificationId = 1001,
-                        Title = "Напоминание",
-                        Description = "Пора сменить линзы! Срок носки истёк.",
-                        BadgeNumber = 1,
-                        NotifyTime = DateTime.Now.AddSeconds(5),
-                        Android =
-                {
-                    Ongoing = true,
-                    Priority = (NotificationPriority)1
-                },
-                        
-                    };
-
-                    NotificationCenter.Current.Show(notification);
-                    _notificationSent = true;
-                    Debug.WriteLine("Уведомление запланировано");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Ошибка: {ex}");
-            }
+        void StartLensCheckService()
+        {
+#if ANDROID
+    var context = Android.App.Application.Context;
+    var intent = new Android.Content.Intent(context, typeof(Clens.Droid.LensCheckService));
+    context.StartForegroundService(intent);
+#endif
         }
     }
 }

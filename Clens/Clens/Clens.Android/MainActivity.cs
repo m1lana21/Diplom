@@ -24,7 +24,7 @@ namespace Clens.Droid
             Rg.Plugins.Popup.Popup.Init(this);
             LoadApplication(new App());
             NotificationCenter.NotifyNotificationTapped(Intent);
-
+            DependencyService.Get<Clens.ILensServiceStarter>()?.StartLensCheckService();
         }
 
         protected override void OnNewIntent(Intent intent)

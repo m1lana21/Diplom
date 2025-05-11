@@ -5,6 +5,7 @@
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="Background" Value="#B5DDA4"></Setter>
             <Setter Property="FontSize" Value="25"></Setter>
+            <!--<Setter Property="FontFamily" Value="Comfortaa-Regular"></Setter>-->
             <Setter Property="CornerRadius" Value="15"></Setter>
             <Setter Property="TextColor" Value="Black"></Setter>
         </Style>
