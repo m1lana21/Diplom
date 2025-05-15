@@ -5,13 +5,25 @@
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="Background" Value="#B5DDA4"></Setter>
             <Setter Property="FontSize" Value="25"></Setter>
-            <!--<Setter Property="FontFamily" Value="Comfortaa-Regular"></Setter>-->
+            <Setter Property="FontFamily" Value="Comfortaa-Bold"></Setter>
             <Setter Property="CornerRadius" Value="15"></Setter>
             <Setter Property="TextColor" Value="Black"></Setter>
         </Style>
 
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value = "TimesNewRoman"></Setter>
+            <Setter Property="FontFamily" Value = "Comfortaa-Bold"></Setter>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontFamily" Value = "Comfortaa-Light"></Setter>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontFamily" Value = "Comfortaa-Light"></Setter>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="FontFamily" Value = "Comfortaa-Light"></Setter>
         </Style>
 
         <!--<ResourceDictionary>

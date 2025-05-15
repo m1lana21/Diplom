@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Plugin.LocalNotification;
 using Android.Content;
+using AndroidX.AppCompat.App;
 
 namespace Clens.Droid
 {
@@ -15,6 +16,8 @@ namespace Clens.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
 
             NotificationCenter.CreateNotificationChannel();
 

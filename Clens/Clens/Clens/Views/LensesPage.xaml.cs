@@ -63,7 +63,7 @@ namespace Clens
             }
             else
             {
-                endDate.Text = null; // Если нет, оставляем пустым
+                endDate.Text = null;
             }
         }
 

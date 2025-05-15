@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Clens.Droid;
 using Clens;
-
 [assembly: Dependency(typeof(PreferenceService))]
 namespace Clens.Droid
 {
@@ -10,7 +9,6 @@ namespace Clens.Droid
     {
         private const string PrefName = "LensPrefs";
         private const string DateKey = "StartDateKeyForPush";
-
         public void SaveStartDate(string date)
         {
             var prefs = Android.App.Application.Context.GetSharedPreferences(PrefName, FileCreationMode.Private);
@@ -18,7 +16,6 @@ namespace Clens.Droid
             editor.PutString(DateKey, date);
             editor.Apply();
         }
-
         public string GetStartDate()
         {
             var prefs = Android.App.Application.Context.GetSharedPreferences(PrefName, FileCreationMode.Private);

@@ -1,42 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\",
+  "WorkspaceRootPath": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\authpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
-      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\authpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens.android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\authpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\app.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\views\\accountpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\views\\accountpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\app.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
       "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\app.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens.android\\lenscheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\lenscheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\mainpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\mainpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
       "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\mainpage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\clens\\clens.android\\preferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\preferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\views\\historypage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\views\\historypage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\views\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\views\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\clens\\clens\\clens\\views\\lensespage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\views\\lensespage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
       "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\views\\lensespage.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\clens\\clens.android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\views\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\views\\lensespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\clens\\clens.android\\lenscheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\lenscheckservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\ipreferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\ipreferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\clens\\clens.android\\preferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\preferenceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|d:\\study\\\u0434\u0438\u043F\u043B\u043E\u043C\\diplom\\clens\\clens\\clens\\ilensservicestarter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5275DBD-57BC-4F79-9F81-30EEB6646825}|Clens\\Clens\\Clens.csproj|solutionrelative:clens\\clens\\ilensservicestarter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\clens\\clens.android\\lensservicestarter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81FF0DC3-6A7A-4CE8-A36A-1F70C6CB69E7}|Clens\\Clens.Android\\Clens.Android.csproj|solutionrelative:clens\\clens.android\\lensservicestarter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,11 +62,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainActivity.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\MainActivity.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens.Android\\MainActivity.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\MainActivity.cs*",
+              "RelativeToolTip": "Clens\\Clens.Android\\MainActivity.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T18:30:46.107Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -74,115 +103,154 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\App.xaml",
-              "RelativeDocumentMoniker": "Clens\\Clens\\App.xaml",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\App.xaml",
-              "RelativeToolTip": "Clens\\Clens\\App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-07T14:14:24.111Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthPage.xaml",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AuthPage.xaml",
-              "RelativeDocumentMoniker": "Clens\\Clens\\AuthPage.xaml",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AuthPage.xaml",
-              "RelativeToolTip": "Clens\\Clens\\AuthPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-07T14:07:06.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthPage.xaml.cs",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AuthPage.xaml.cs",
-              "RelativeDocumentMoniker": "Clens\\Clens\\AuthPage.xaml.cs",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\AuthPage.xaml.cs",
-              "RelativeToolTip": "Clens\\Clens\\AuthPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\App.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\App.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\App.xaml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAowBIAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T16:00:07.474Z",
+              "WhenOpened": "2025-05-12T18:24:54.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountPage.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\AccountPage.xaml",
+              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\AccountPage.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\AccountPage.xaml",
+              "RelativeToolTip": "Clens\\Clens\\Views\\AccountPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-12T17:58:57.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HistoryPage.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\HistoryPage.xaml",
+              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\HistoryPage.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\HistoryPage.xaml",
+              "RelativeToolTip": "Clens\\Clens\\Views\\HistoryPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-12T17:55:21.643Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "MainPage.xaml",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\MainPage.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\MainPage.xaml",
               "RelativeDocumentMoniker": "Clens\\Clens\\MainPage.xaml",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\MainPage.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\MainPage.xaml",
               "RelativeToolTip": "Clens\\Clens\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-12T15:56:50.091Z"
+              "WhenOpened": "2025-05-12T17:45:39.8Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LensCheckService.cs",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\LensCheckService.cs",
-              "RelativeDocumentMoniker": "Clens\\Clens.Android\\LensCheckService.cs",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\LensCheckService.cs",
-              "RelativeToolTip": "Clens\\Clens.Android\\LensCheckService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T13:55:59.991Z",
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\App.xaml",
+              "RelativeDocumentMoniker": "Clens\\Clens\\App.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\App.xaml",
+              "RelativeToolTip": "Clens\\Clens\\App.xaml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-12T17:42:49.412Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "LensesPage.xaml.cs",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml.cs",
-              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\LensesPage.xaml.cs",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml.cs",
-              "RelativeToolTip": "Clens\\Clens\\Views\\LensesPage.xaml.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAAAHUAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T19:39:13.053Z"
+              "Title": "LensesPage.xaml",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml",
+              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\LensesPage.xaml",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml",
+              "RelativeToolTip": "Clens\\Clens\\Views\\LensesPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-11T14:43:07.086Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "LensesPage.xaml",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml",
-              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\LensesPage.xaml",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml",
-              "RelativeToolTip": "Clens\\Clens\\Views\\LensesPage.xaml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-12T15:09:57.762Z"
+              "Title": "LensesPage.xaml.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\Views\\LensesPage.xaml.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\Views\\LensesPage.xaml.cs",
+              "RelativeToolTip": "Clens\\Clens\\Views\\LensesPage.xaml.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAK0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T19:39:13.053Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
+              "Title": "ILensServiceStarter.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\ILensServiceStarter.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\ILensServiceStarter.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\ILensServiceStarter.cs",
+              "RelativeToolTip": "Clens\\Clens\\ILensServiceStarter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T14:43:41.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IPreferenceService.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\IPreferenceService.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens\\IPreferenceService.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens\\IPreferenceService.cs",
+              "RelativeToolTip": "Clens\\Clens\\IPreferenceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T14:43:43.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LensServiceStarter.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\LensServiceStarter.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens.Android\\LensServiceStarter.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\LensServiceStarter.cs",
+              "RelativeToolTip": "Clens\\Clens.Android\\LensServiceStarter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T14:42:47.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "PreferenceService.cs",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\PreferenceService.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\PreferenceService.cs",
               "RelativeDocumentMoniker": "Clens\\Clens.Android\\PreferenceService.cs",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\PreferenceService.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\PreferenceService.cs",
               "RelativeToolTip": "Clens\\Clens.Android\\PreferenceService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T15:00:47.514Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "MainActivity.cs",
-              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\MainActivity.cs",
-              "RelativeDocumentMoniker": "Clens\\Clens.Android\\MainActivity.cs",
-              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Clens\\Clens\\Clens.Android\\MainActivity.cs",
-              "RelativeToolTip": "Clens\\Clens.Android\\MainActivity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABYAAAAAAAAAA==",
+              "Title": "LensCheckService.cs",
+              "DocumentMoniker": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\LensCheckService.cs",
+              "RelativeDocumentMoniker": "Clens\\Clens.Android\\LensCheckService.cs",
+              "ToolTip": "D:\\Study\\\u0414\u0438\u043F\u043B\u043E\u043C\\Diplom\\Clens\\Clens\\Clens.Android\\LensCheckService.cs",
+              "RelativeToolTip": "Clens\\Clens.Android\\LensCheckService.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T18:44:39.71Z"
+              "WhenOpened": "2025-04-12T13:55:59.991Z"
             }
           ]
         }

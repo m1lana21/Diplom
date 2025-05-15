@@ -5,13 +5,26 @@
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*" VerticalOptions="FillAndExpand">
             <StackLayout Grid.Row="0" Spacing="20" Padding="10">
-                <Label x:Name="EmailLabel" FontSize="25" HorizontalTextAlignment="Start" HorizontalOptions="Start" Padding="10"/>
+                
+                <Frame HasShadow="False" CornerRadius="50" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="account.png" Aspect="AspectFill"/>
+                </Frame>
+
+                <Label x:Name="LoginLabel" Text="Login" FontSize="30" FontFamily="Comfortaa-Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Entry x:Name="PasswordEntry" HeightRequest="40" MinimumWidthRequest="300" FontSize="25" Placeholder="Пароль" IsPassword="True" IsReadOnly="True"></Entry>
+                    <Label FontSize="20" Text="Почта: " HorizontalTextAlignment="Start" HorizontalOptions="Start" Padding="0,10,0,0"/>
+                    <Label x:Name="EmailLabel" FontSize="20" HorizontalTextAlignment="Start" HorizontalOptions="Start" Padding="10"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="Пароль: " FontSize="20"></Label>
+                        <Entry x:Name="PasswordEntry" HeightRequest="40" MinimumWidthRequest="500" FontSize="20" Placeholder="Пароль" IsPassword="True" IsReadOnly="True"></Entry>
                     <ImageButton x:Name="PasswordButton" Source="edit.png" HeightRequest="40" WidthRequest="40" Clicked="PasswordButton_Clicked"></ImageButton>
                 </StackLayout>
+                
             </StackLayout>
-            <Label Grid.Row="1" Text="Выйти из аккаунта" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" FontSize="17" Padding="15">
+            
+            <Label Grid.Row="1" Text="ВЫЙТИ" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" FontSize="25" Padding="15">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>

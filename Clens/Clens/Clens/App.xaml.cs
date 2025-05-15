@@ -14,8 +14,9 @@ namespace Clens
         public App()
         {
             InitializeComponent();
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
 
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
+            UserAppTheme = OSAppTheme.Light;
             // Получаем состояние без дефолтного true
             bool isRemembered = Preferences.Get("IsRemembered", false);
             var authToken = SecureStorage.GetAsync("UserToken").Result;
@@ -41,6 +42,8 @@ namespace Clens
             navigationPage.BarTextColor = Color.Black;
             MainPage = navigationPage;
         }
+
+       
 
         protected override void OnStart()
         {

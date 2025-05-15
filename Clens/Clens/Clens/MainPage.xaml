@@ -3,25 +3,22 @@
     <StackLayout Orientation="Vertical">
         <Image Source="clenslogo.jpeg" HorizontalOptions="Center"/>
         <RelativeLayout HorizontalOptions="Center">
-            <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
+            <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,70,0,0" Padding="15" CornerRadius="15">
                 <StackLayout>
                     <Entry x:Name="EmailEntry" Placeholder="Логин" Margin="0,30,0,50" HorizontalTextAlignment="Center"></Entry>
                     <Entry x:Name="PasswordEntry" Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
                     <Button Text="Войти" BackgroundColor="#B5DDA4" FontSize="25"  Clicked="loginButton_Clicked"></Button>
+                    <Label Text="РЕГИСТРАЦИЯ" FontSize="25" FontAttributes="Bold" TextColor="#B5DDA4" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <Label Text="Запомнить меня" FontSize="17" TextColor="Gray" Margin="5"></Label>
+                        <Label Text="Запомнить меня" FontSize="20" TextColor="Gray" Margin="5"></Label>
                         <Switch x:Name="isRememberedSwitch" IsToggled="False" OnColor="#B5DDA4" ThumbColor="#B5DDA4" Toggled="Switch_Toggled"></Switch>
                     </StackLayout>
                 </StackLayout>
             </Frame>
         </RelativeLayout>
-        <StackLayout  Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="Впервые здесь?" FontSize="18" HorizontalTextAlignment="Center"></Label>
-            <Label Text="Зарегистрируйтесь!" FontSize="18" FontAttributes="Bold" TextColor="#B5DDA4" HorizontalTextAlignment="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
     </StackLayout>
 </ContentPage>

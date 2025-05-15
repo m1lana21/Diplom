@@ -7565,11 +7565,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+      "projectUniqueName": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
       "projectName": "Clens.Android",
-      "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
+      "projectPath": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens.Android\\obj\\",
+      "outputPath": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -7590,8 +7590,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj": {
-              "projectPath": "D:\\Study\\Диплом\\Clens\\Clens\\Clens\\Clens.csproj"
+            "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens\\Clens.csproj": {
+              "projectPath": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens\\Clens.csproj"
             }
           }
         }

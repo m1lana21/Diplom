@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Clens
 {
     public interface IPreferenceService
@@ -9,5 +8,4 @@ namespace Clens
         void SaveStartDate(string date);
         string GetStartDate();
     }
-
 }

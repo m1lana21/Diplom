@@ -8,10 +8,10 @@
                         <Frame Padding="5" Margin="15" CornerRadius="15" BorderColor="#B5DDA4" IsClippedToBounds="True">
                             <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
                                 <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                                    <Label FontSize="18" Text="{Binding StartDate, StringFormat='Дата начала: {0:dd.MM.yyyy}'}" />
-                                    <Label FontSize="18" Text="{Binding EndDate, StringFormat='Дата окончания: {0:dd.MM.yyyy}'}" />
+                                    <Label FontSize="18" Text="{Binding StartDate, StringFormat='Начало: {0:dd.MM.yyyy}'}" />
+                                    <Label FontSize="18" Text="{Binding EndDate, StringFormat='Окончание: {0:dd.MM.yyyy}'}" />
                                     <Label FontSize="18" Text="{Binding Type, StringFormat='Тип линз: {0}'}" />
-                                    <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность носки: {0:%d} дней'}" />
+                                    <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность: {0:%d} дней'}" />
                                 </StackLayout>
                                 <StackLayout VerticalOptions="Center" Margin="0,0,10,0" HorizontalOptions="End" Grid.RowSpan="2" Grid.Column="1">
                                     <ImageButton Source="edit.png" x:Name="editButton" HeightRequest="30" WidthRequest="30" Clicked="editButton_Clicked"/>
