@@ -47,35 +47,35 @@ namespace Clens
 
         protected override void OnStart()
         {
-            NotificationCenter.Current.NotificationTapped += (e) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
-                });
-            };
+            //NotificationCenter.Current.NotificationTapped += (e) =>
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
+            //    });
+            //};
         }
 
         protected override void OnSleep()
         {
-            NotificationCenter.Current.NotificationTapped += (e) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
-                });
-            };
+            //NotificationCenter.Current.NotificationTapped += (e) =>
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
+            //    });
+            //};
         }
 
         protected override void OnResume()
         {
-            NotificationCenter.Current.NotificationTapped += (e) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
-                });
-            };
+            //NotificationCenter.Current.NotificationTapped += (e) =>
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await MainPage.DisplayAlert("Уведомление", "Нажато на уведомление", "OK");
+            //    });
+            //};
         }
 
         

@@ -1,8 +1,15 @@
 ﻿using Acr.UserDialogs.Infrastructure;
+using Firebase.Database;
+using Firebase.Database.Query;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Plugin.FirebaseAuth;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -20,8 +27,9 @@ namespace Clens
         public AccountPage()
         {
             InitializeComponent();
-            EmailLabel.Text = Preferences.Get("SavedEmail", "");  // Получаем сохранённый email
-            PasswordEntry.Text = Preferences.Get("SavedPassword", "");  // Получаем сохранённый логин
+            GetUsername();
+            GetEmail();
+            GetPassword();
         }
         
 
@@ -55,6 +63,43 @@ namespace Clens
             var historyItem = button?.BindingContext as HistoryItem;
             var myPopup = new PasswordEditPage();
             await PopupNavigation.Instance.PushAsync(myPopup);
+        }
+
+        private async void GetUsername()
+        {
+            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
+            var login = await firebase
+                .Child("Users")
+                .Child(userUid)
+                .Child("Login")
+                .OnceSingleAsync<string>();
+            LoginLabel.Text = login;
+        }
+        private async void GetPassword()
+        {
+            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
+            var password = await firebase
+                .Child("Users")
+                .Child(userUid)
+                .Child("Password")
+                .OnceSingleAsync<string>();
+            PasswordEntry.Text = password;
+        }
+        private async void GetEmail()
+        {
+            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
+            var email = await firebase
+                .Child("Users")
+                .Child(userUid)
+                .Child("Email")
+                .OnceSingleAsync<string>();
+            EmailLabel.Text = email;
         }
     }
 }

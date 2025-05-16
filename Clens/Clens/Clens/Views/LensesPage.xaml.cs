@@ -114,7 +114,7 @@ namespace Clens
                 resetLensesLabel.IsVisible = false;
                 
             }
-
+            NotificationCenter.Current.Cancel(1234);
             StartLensCheckService();
             Preferences.Set(StartDateKey, startDateValue.ToString("dd MMMM yyyy", new CultureInfo("ru-RU")));
             DependencyService.Get<IPreferenceService>()?.SaveStartDate(startDateValue.ToString("o")); // ISO 8601
@@ -162,12 +162,12 @@ namespace Clens
             Preferences.Remove(EndDateKey); 
             Preferences.Remove("TypeKey");
 
-#if ANDROID
-var prefs = Android.App.Application.Context.GetSharedPreferences("LensPrefs", Android.Content.FileCreationMode.Private);
-var editor = prefs.Edit();
-editor.Clear();
-editor.Apply();
-#endif
+            #if ANDROID
+            var prefs = Android.App.Application.Context.GetSharedPreferences("LensPrefs", Android.Content.FileCreationMode.Private);
+            var editor = prefs.Edit();
+            editor.Clear();
+            editor.Apply();
+            #endif
 
             nullDataLabel.Text = "Тут будет написано, когда Вам нужно будет сменить линзы!";
 
@@ -184,6 +184,11 @@ editor.Apply();
             {
                 ClearInfo();
                 NotificationCenter.Current.Cancel(1234);
+                // Сбрасываем дату последнего уведомления
+                Preferences.Remove("LastNotificationDate");
+                // Перезапускаем сервис
+                StopLensCheckService();
+                StartLensCheckService();
             }
         }
 
@@ -191,9 +196,13 @@ editor.Apply();
         {
             if (lensTypePicker.SelectedItem != null)
             {
-                UpdateReplacementDate(null, null);
                 ClearInfo();
                 NotificationCenter.Current.Cancel(1234);
+                // Сбрасываем дату последнего уведомления
+                Preferences.Remove("LastNotificationDate");
+                // Перезапускаем сервис
+                StopLensCheckService();
+                StartLensCheckService();
             }
         }
 
@@ -235,7 +244,7 @@ editor.Apply();
         void StopLensCheckService()
         {
 #if ANDROID
-    Plugin.LocalNotification.NotificationCenter.Current.Cancel(1234);
+    NotificationCenter.Current.Cancel(1234);
     var context = Android.App.Application.Context;
     var intent = new Android.Content.Intent(context, typeof(Clens.Droid.LensCheckService));
     context.StopService(intent);
@@ -250,5 +259,9 @@ editor.Apply();
     context.StartForegroundService(intent);
 #endif
         }
+
+        
     }
+
+
 }

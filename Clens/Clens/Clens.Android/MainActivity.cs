@@ -7,6 +7,8 @@ using Android.OS;
 using Plugin.LocalNotification;
 using Android.Content;
 using AndroidX.AppCompat.App;
+using Plugin.FirebaseAuth;
+using Firebase;
 
 namespace Clens.Droid
 {
@@ -42,5 +44,7 @@ namespace Clens.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        
     }
 }

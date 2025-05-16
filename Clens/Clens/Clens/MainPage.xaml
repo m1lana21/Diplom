@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.MainPage">
+<ContentPage BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.MainPage">
     <StackLayout Orientation="Vertical">
         <Image Source="clenslogo.jpeg" HorizontalOptions="Center"/>
         <RelativeLayout HorizontalOptions="Center">
             <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,70,0,0" Padding="15" CornerRadius="15">
                 <StackLayout>
                     <Entry x:Name="EmailEntry" Placeholder="Логин" Margin="0,30,0,50" HorizontalTextAlignment="Center"></Entry>
-                    <Entry x:Name="PasswordEntry" Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
+                    <Entry x:Name="PasswordEntry" MaxLength = "24" Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
                     <Button Text="Войти" BackgroundColor="#B5DDA4" FontSize="25"  Clicked="loginButton_Clicked"></Button>
                     <Label Text="РЕГИСТРАЦИЯ" FontSize="25" FontAttributes="Bold" TextColor="#B5DDA4" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>

@@ -9,6 +9,8 @@ using Firebase.Database.Query;
 using Newtonsoft.Json;
 using System.Net.Http;
 using Xamarin.Essentials;
+using static Clens.HistoryPage;
+using System.Collections.Generic;
 
 namespace Clens
 {
@@ -19,12 +21,17 @@ namespace Clens
         public AuthPage ()
 		{
 			InitializeComponent ();
-		}
+            DeleteSpace(loginEntry);
+            DeleteSpace(emailEntry);
+            DeleteSpace(passwordEntry);
+            DeleteSpace(passwordConfirmEntry);
+
+        }
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            var mainPage = new MainPage();
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new MainPage());
+            Navigation.RemovePage(this);
         }
 
         private async void registerButton_Clicked(object sender, EventArgs e)
@@ -36,6 +43,8 @@ namespace Clens
             if (ValidateInputs(email, login, password, confirmPassword))
             {
                 await RegisterUser(login, email, password);
+                await Navigation.PushAsync(new SecondPage());
+                Navigation.RemovePage(this);
             }
             
         }
@@ -103,6 +112,17 @@ namespace Clens
                 // Сохраняем токен в SecureStorage
                 await SecureStorage.SetAsync("UserToken", firebaseResponse.IdToken);
 
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+                await firebase.Child("Users").Child(userUid).PatchAsync(new Dictionary<string, object>
+                {
+                    ["Login"] = login,
+                    ["Password"] = password,
+                    ["Email"] = email
+                });
+
                 await DisplayAlert("Успех!", "Регистрация прошла успешно.", "ОК");
                 return firebaseResponse;
             }
@@ -112,6 +132,17 @@ namespace Clens
                 return null;
             }
 
+        }
+
+        private void DeleteSpace(Entry entry)
+        {
+            entry.TextChanged += (sender, args) =>
+            {
+                if (args.NewTextValue?.Contains(" ") ?? false)
+                {
+                    ((Entry)sender).Text = args.OldTextValue; // Убираем пробел
+                }
+            };
         }
 
     }

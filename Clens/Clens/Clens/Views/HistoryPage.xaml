@@ -23,5 +23,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackLayout x:Name="EmptyStateLayout" VerticalOptions="Center" HorizontalOptions="Center" Spacing="40" Margin="0,237,0,0">
+            <Image Source="emptyhistory.png" HeightRequest="125" WidthRequest="125" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="Ваша история носки линз пока пуста" FontSize="20" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        
     </StackLayout>
 </ContentPage>

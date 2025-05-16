@@ -13,8 +13,10 @@
           "FirebaseAuth": "2.0.6",
           "FirebaseAuthentication.net": "4.1.0",
           "FirebaseDatabase.net": "4.2.0",
+          "Microsoft.CSharp": "4.7.0",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "13.0.3",
+          "Plugin.FirebaseAuth": "4.1.0",
           "Plugin.LocalNotification": "5.2.0",
           "Rg.Plugins.Popup": "2.1.0",
           "Xamarin.Essentials": "1.8.1",
@@ -324,6 +326,14 @@
           }
         }
       },
+      "Microsoft.CSharp/4.7.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.CSharp.dll": {
+            "assemblyVersion": "4.0.5.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/2.0.2": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0"
@@ -526,6 +536,14 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.1.20722"
+          }
+        }
+      },
+      "Plugin.FirebaseAuth/4.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.FirebaseAuth.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         }
       },
@@ -1554,6 +1572,13 @@
       "path": "microsoft.aspnetcore.webutilities/2.0.3",
       "hashPath": "microsoft.aspnetcore.webutilities.2.0.3.nupkg.sha512"
     },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Caching.Abstractions/2.0.2": {
       "type": "package",
       "serviceable": true,
@@ -1693,6 +1718,13 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "Plugin.FirebaseAuth/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1iKSeHxljZI2JiIExmsmvdPgX7mSgAdDK2mjiZuI2QMCg0KzUR52eJI62PSjKmVF22T2rKBy55qbwLPp0fGD6A==",
+      "path": "plugin.firebaseauth/4.1.0",
+      "hashPath": "plugin.firebaseauth.4.1.0.nupkg.sha512"
     },
     "Plugin.LocalNotification/5.2.0": {
       "type": "package",

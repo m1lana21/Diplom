@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3nHP9QHqS38=",
+  "dgSpecHash": "s3aM7X6wuBM=",
   "success": true,
   "projectFilePath": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.0.4\\microsoft.aspnetcore.mvc.abstractions.2.0.4.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.0.3\\microsoft.aspnetcore.routing.abstractions.2.0.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.0.3\\microsoft.aspnetcore.webutilities.2.0.3.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\2.0.2\\microsoft.extensions.caching.abstractions.2.0.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.caching.memory\\2.0.2\\microsoft.extensions.caching.memory.2.0.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.0.2\\microsoft.extensions.configuration.abstractions.2.0.2.nupkg.sha512",
@@ -45,6 +46,8 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.win32.registry\\4.4.0\\microsoft.win32.registry.4.4.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\plugin.currentactivity\\2.1.0.4\\plugin.currentactivity.2.1.0.4.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\plugin.firebaseauth\\4.1.0\\plugin.firebaseauth.4.1.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\plugin.localnotification\\5.2.0\\plugin.localnotification.5.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\portable.bouncycastle\\1.8.5\\portable.bouncycastle.1.8.5.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\rg.plugins.popup\\2.1.0\\rg.plugins.popup.2.1.0.nupkg.sha512",
@@ -145,10 +148,19 @@
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.androidx.viewpager\\1.0.0.8\\xamarin.androidx.viewpager.1.0.0.8.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.androidx.viewpager2\\1.0.0.10\\xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.androidx.work.runtime\\2.4.0.1\\xamarin.androidx.work.runtime.2.4.0.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.auth\\119.3.1\\xamarin.firebase.auth.119.3.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.auth.interop\\119.0.0\\xamarin.firebase.auth.interop.119.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.common\\119.3.0\\xamarin.firebase.common.119.3.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.components\\116.0.0\\xamarin.firebase.components.116.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.google.android.material\\1.4.0.2\\xamarin.google.android.material.1.4.0.2.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.google.autovalue.annotations\\1.6.5\\xamarin.google.autovalue.annotations.1.6.5.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.base\\117.2.1\\xamarin.googleplayservices.base.117.2.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.basement\\117.2.1\\xamarin.googleplayservices.basement.117.2.1.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.tasks\\117.0.2\\xamarin.googleplayservices.tasks.117.0.2.nupkg.sha512"
   ],
   "logs": [
     {

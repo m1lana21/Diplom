@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Firebase.Database;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +20,8 @@ namespace Clens
         {
             InitializeComponent();
             isRememberedSwitch.IsToggled = Preferences.Get("IsRemembered", false);
+            DeleteSpace(EmailEntry);
+            DeleteSpace(PasswordEntry);
         }
 
         protected override async void OnAppearing()
@@ -43,25 +48,51 @@ namespace Clens
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            var email = EmailEntry.Text;
-            var password = PasswordEntry.Text;
+            var userInput = EmailEntry?.Text?.Trim(); // Проверка на null для EmailEntry
+            var password = PasswordEntry?.Text;      // Проверка на null для PasswordEntry
+
+            if (string.IsNullOrEmpty(userInput) || string.IsNullOrEmpty(password))
+            {
+                await DisplayAlert("Ошибка", "Необходимо заполнить поля логина и пароля", "OK");
+                return;
+            }
 
             try
             {
-                var loginResult = await LoginUser(email, password);
-                if (loginResult != null)
+                bool isEmail = !string.IsNullOrEmpty(userInput) &&
+                              userInput.Contains("@") &&
+                              userInput.Contains(".") &&
+                              userInput.Length > 12; // Уменьшил минимальную длину
+
+                FirebaseResponse loginResult = null;
+
+                if (isEmail)
+                {
+                    loginResult = await LoginUser(userInput, password);
+                }
+                else
+                {
+                    loginResult = await LoginWithUsername(userInput, password);
+                }
+
+                if (loginResult?.IdToken != null) // Проверка на null для loginResult
                 {
                     await SecureStorage.SetAsync("UserToken", loginResult.IdToken);
 
-                    if (isRememberedSwitch.IsToggled)
+                    if (isRememberedSwitch?.IsToggled == true) // Проверка на null для isRememberedSwitch
                     {
-                        Preferences.Set("SavedEmail", email);
+                        Preferences.Set("SavedEmail", userInput);
                         Preferences.Set("SavedPassword", password);
                     }
 
-                    await Navigation.PushAsync(new SecondPage());
+                    await Navigation?.PushAsync(new SecondPage()); // Проверка на null для Navigation
                     EmailEntry.Text = string.Empty;
                     PasswordEntry.Text = string.Empty;
+                    Navigation?.RemovePage(this);
+                }
+                else
+                {
+                    await DisplayAlert("Ошибка", "Не удалось войти в систему", "OK");
                 }
             }
             catch (Exception ex)
@@ -70,28 +101,179 @@ namespace Clens
             }
         }
 
-        private async Task<FirebaseResponse> LoginUser(string email, string password)
+        public async Task<FirebaseResponse> LoginWithUsername(string username, string password)
         {
-            var client = new HttpClient();
-            var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                throw new ArgumentException("Логин и пароль не могут быть пустыми");
 
-            var content = new StringContent(JsonConvert.SerializeObject(new
+            var firebaseClient = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+            var users = await firebaseClient
+                .Child("Users")
+                .OnceAsync<Dictionary<string, object>>();
+
+            var user = users?.FirstOrDefault(u =>
+                u?.Object?.ContainsKey("Login") == true &&
+                u.Object["Login"]?.ToString() == username);
+
+            if (user == null)
             {
-                email,
-                password,
-                returnSecureToken = true
-            }), Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync(requestUri, content);
-            var responseString = await response.Content.ReadAsStringAsync();
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception("Неверный логин или пароль");
+                throw new Exception("Пользователь с таким логином не найден");
             }
 
-            return JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+            if (!user.Object.TryGetValue("Email", out var emailObj) || string.IsNullOrEmpty(emailObj?.ToString()))
+            {
+                throw new Exception("Для этого пользователя не указан email");
+            }
+
+            return await LoginUser(emailObj.ToString(), password);
         }
+
+        private async Task<FirebaseResponse> LoginUser(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                throw new ArgumentException("Email и пароль не могут быть пустыми");
+
+            try
+            {
+                var client = new HttpClient();
+                var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
+
+                var content = new StringContent(JsonConvert.SerializeObject(new
+                {
+                    email,
+                    password,
+                    returnSecureToken = true
+                }), Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(requestUri, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorResponse = JsonConvert.DeserializeObject<FirebaseErrorResponse>(responseString);
+                    throw new Exception(errorResponse?.error?.message ?? "Неверный email или пароль");
+                }
+
+                return JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ошибка при входе: {ex.Message}");
+            }
+        }
+
+        public class FirebaseErrorResponse
+        {
+            public FirebaseError error { get; set; }
+        }
+
+        public class FirebaseError
+        {
+            public string message { get; set; }
+        }
+
+        //private async void loginButton_Clicked(object sender, EventArgs e)
+        //{
+
+        //    var userInput = EmailEntry.Text.Trim();
+        //    var password = PasswordEntry.Text;
+
+        //    if (string.IsNullOrEmpty(userInput) || string.IsNullOrEmpty(password))
+        //    {
+        //        await DisplayAlert("Ошибка", "Необходимо заполнить поля логина и пароля", "OK");
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            bool isEmail = userInput.Contains("@") && userInput.Contains(".") && userInput.Length > 12;
+
+        //            FirebaseResponse loginResult;
+
+        //            if (isEmail)
+        //            {
+        //                loginResult = await LoginUser(userInput, password);
+        //            }
+        //            else
+        //            {
+        //                loginResult = await LoginWithUsername(userInput, password);
+        //            }
+
+        //            if (loginResult != null)
+        //            {
+        //                await SecureStorage.SetAsync("UserToken", loginResult.IdToken);
+
+        //                if (isRememberedSwitch.IsToggled)
+        //                {
+        //                    Preferences.Set("SavedEmail", userInput);
+        //                    Preferences.Set("SavedPassword", password);
+        //                }
+
+        //                await Navigation.PushAsync(new SecondPage());
+        //                EmailEntry.Text = string.Empty;
+        //                PasswordEntry.Text = string.Empty;
+        //                Navigation.RemovePage(this);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            await DisplayAlert("Ошибка", ex.Message, "OK");
+        //        }
+        //    }
+
+
+        //}
+
+        //public async Task<FirebaseResponse> LoginWithUsername(string username, string password)
+        //{
+        //    var firebaseClient = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+        //    var users = await firebaseClient
+        //        .Child("Users")
+        //        .OnceAsync<Dictionary<string, object>>();
+
+        //    var user = users.FirstOrDefault(u => u.Object["Login"]?.ToString() == username);
+
+        //    if (user == null)
+        //    {
+        //        throw new Exception("Пользователь с таким логином не найден");
+        //    }
+
+        //    var email = user.Object["Email"]?.ToString();
+
+        //    if (string.IsNullOrEmpty(email))
+        //    {
+        //        throw new Exception("Для этого пользователя не указан email");
+        //    }
+
+        //    return await LoginUser(email, password);
+        //}
+
+        //private async Task<FirebaseResponse> LoginUser(string email, string password)
+        //{
+
+        //    var client = new HttpClient();
+        //    var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
+
+        //    var content = new StringContent(JsonConvert.SerializeObject(new
+        //    {
+        //        email,
+        //        password,
+        //        returnSecureToken = true
+        //    }), Encoding.UTF8, "application/json");
+
+        //    var response = await client.PostAsync(requestUri, content);
+        //    var responseString = await response.Content.ReadAsStringAsync();
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        throw new Exception("Неверный пароль");
+        //    }
+
+        //    return JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
+        //}
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
@@ -110,6 +292,19 @@ namespace Clens
             var authPage = new AuthPage();
 
             await Navigation.PushAsync(authPage);
+            Navigation.RemovePage(this);
+
+        }
+
+        private void DeleteSpace(Entry entry)
+        {
+            entry.TextChanged += (sender, args) =>
+            {
+                if (args.NewTextValue?.Contains(' ') ?? false)
+                {
+                    ((Entry)sender).Text = args.OldTextValue; // Убираем пробел
+                }
+            };
         }
     }
 
