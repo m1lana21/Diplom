@@ -6,6 +6,8 @@ public class MonoPackageManager_Resources {
 		"Acr.UserDialogs.dll",
 		"BouncyCastle.Crypto.dll",
 		"Clens.dll",
+		"CloudinaryDotNet.dll",
+		"dotenv.net.dll",
 		"Firebase.Auth.dll",
 		"Firebase.dll",
 		"FirebaseAuth.dll",

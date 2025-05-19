@@ -9,6 +9,7 @@ using Android.Content;
 using AndroidX.AppCompat.App;
 using Plugin.FirebaseAuth;
 using Firebase;
+using Plugin.CurrentActivity;
 
 namespace Clens.Droid
 {
@@ -17,6 +18,7 @@ namespace Clens.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
             base.OnCreate(savedInstanceState);
 
             AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
@@ -24,6 +26,11 @@ namespace Clens.Droid
             NotificationCenter.CreateNotificationChannel();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            typeof(Xamarin.Essentials.Platform)
+    .GetProperty("CurrentActivity", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
+    ?.SetValue(null, this);
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Device.SetFlags(new[] { "Shell_TabBasedNavigation" });
             Rg.Plugins.Popup.Popup.Init(this);

@@ -2323,6 +2323,8 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawabl
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\edit.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\lens.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\eye.png
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\emptyhistory.png
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\add.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\uploadflags.txt
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\resolvedassemblies.hash
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Acr.UserDialogs.dll
@@ -2331,6 +2333,7 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\ass
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Clens.Android.pdb
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Clens.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Clens.pdb
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\CloudinaryDotNet.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Firebase.Auth.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Firebase.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\FirebaseAuth.dll
@@ -3048,4 +3051,5 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_Conv
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\emptyhistory.png
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\dotenv.net.dll
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\calendar.png

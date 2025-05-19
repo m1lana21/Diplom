@@ -13,6 +13,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Clens.AuthPage;
+using static Clens.MainPage;
 
 namespace Clens
 {
@@ -21,7 +22,7 @@ namespace Clens
     {
         private readonly FirebaseService _firebaseService;
         private readonly FirebaseClient _firebaseClient;
-        private string truePassword;
+        private const string FirebaseResetPasswordUrl = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
         public PasswordEditPage()
         {
             InitializeComponent();
@@ -34,46 +35,66 @@ namespace Clens
 
         private async void saveButton_Clicked(object sender, EventArgs e)
         {
-            truePassword = Preferences.Get("SavedPassword", "");
-            var oldPassword = OldPasswordEntry.Text;
-            var newPassword = NewPasswordEntry.Text;
-            var confirmPassword = ConfirmPasswordEntry.Text;
-            if (oldPassword != truePassword)
-            {
-                await DisplayAlert("Ошибка", "Неверный старый пароль.", "ОК");
-            }
+            string email = EmailEntry.Text?.Trim();
 
-            if (newPassword != confirmPassword)
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@") || !email.Contains("."))
             {
-                await DisplayAlert("Ошибка", "Новые пароли не совпадают. Пожалуйста, проверьте ввод.", "ОК");
+                await DisplayAlert("Ошибка", "Введите корректный email", "OK");
                 return;
             }
 
-            var idToken = Preferences.Get("IdToken", "");
-            
-            var client = new HttpClient();
-            var requestUri = $"https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBNpyK0Xw_ycD_o8ns7aTkNT6WNXKHUY8s";
-
-            var content = new StringContent(JsonConvert.SerializeObject(new
+            try
             {
-                idToken,
-                password = newPassword,
-                returnSecureToken = true
-            }), Encoding.UTF8, "application/json");
+                using (var client = new HttpClient())
+                {
+                    var request = new
+                    {
+                        requestType = "PASSWORD_RESET",
+                        email = email
+                    };
 
-            var response = await client.PostAsync(requestUri, content);
-            var responseString = await response.Content.ReadAsStringAsync();
+                    var json = JsonConvert.SerializeObject(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            if (response.IsSuccessStatusCode)
-            {
-                var firebaseResponse = JsonConvert.DeserializeObject<FirebaseResponse>(responseString);
-                await DisplayAlert("Успех!", "Пароль успешно изменен.", "ОК");
-                await PopupNavigation.Instance.PopAsync();
+                    var response = await client.PostAsync(FirebaseResetPasswordUrl, content);
+                    var responseString = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        await DisplayAlert("Успешно", "Ссылка для сброса пароля отправлена на ваш email", "OK");
+                        await PopupNavigation.Instance.PopAsync();
+                    }
+                    else
+                    {
+                        var error = JsonConvert.DeserializeObject<FirebaseError>(responseString);
+                        await DisplayAlert("Ошибка", GetErrorMessage(error), "OK");
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await DisplayAlert("Ошибка", "Не удалось изменить пароль", "ОК");
+                await DisplayAlert("Ошибка", $"Произошла ошибка: {ex.Message}", "OK");
             }
         }
+
+        private string GetErrorMessage(FirebaseError error)
+        {
+            if (error?.error?.message == "EMAIL_NOT_FOUND")
+                return "Пользователь с таким email не найден";
+            if (error?.error?.message == "INVALID_EMAIL")
+                return "Неверный формат email";
+            return error?.error?.message ?? "Неизвестная ошибка";
+        }
+    }
+
+    public class FirebaseError
+    {
+        public ErrorDetails error { get; set; }
+    }
+
+    public class ErrorDetails
+    {
+        public int code { get; set; }
+        public string message { get; set; }
     }
 }

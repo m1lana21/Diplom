@@ -3,10 +3,10 @@
     <StackLayout Orientation="Vertical">
         <Image Source="clenslogo.jpeg" HorizontalOptions="Center"/>
         <RelativeLayout HorizontalOptions="Center">
-            <Frame RelativeLayout.YConstraint="-70" BackgroundColor="White" WidthRequest="300" Margin="0,70,0,0" Padding="15" CornerRadius="15">
+            <Frame RelativeLayout.YConstraint="-150" BackgroundColor="White" HeightRequest="450" WidthRequest="300" Margin="0,70,0,0" Padding="15" CornerRadius="15">
                 <StackLayout>
-                    <Entry x:Name="EmailEntry" Placeholder="Логин" Margin="0,30,0,50" HorizontalTextAlignment="Center"></Entry>
-                    <Entry x:Name="PasswordEntry" MaxLength = "24" Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
+                    <Entry x:Name="EmailEntry" Placeholder="Логин/Email" FontSize="20" Margin="0,30,0,50" HorizontalTextAlignment="Center"></Entry>
+                    <Entry x:Name="PasswordEntry" MaxLength = "24" FontSize="20" Placeholder="Пароль" IsPassword="True" Margin="0,0,0,30" HorizontalTextAlignment="Center"></Entry>
                     <Button Text="Войти" BackgroundColor="#B5DDA4" FontSize="25"  Clicked="loginButton_Clicked"></Button>
                     <Label Text="РЕГИСТРАЦИЯ" FontSize="25" FontAttributes="Bold" TextColor="#B5DDA4" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
@@ -17,6 +17,11 @@
                         <Label Text="Запомнить меня" FontSize="20" TextColor="Gray" Margin="5"></Label>
                         <Switch x:Name="isRememberedSwitch" IsToggled="False" OnColor="#B5DDA4" ThumbColor="#B5DDA4" Toggled="Switch_Toggled"></Switch>
                     </StackLayout>
+                    <Label x:Name="PasswordLabel" Text="Забыли пароль?" HorizontalOptions="Center" FontSize="20" TextColor="Gray" Margin="5">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1Async" />
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
             </Frame>
         </RelativeLayout>

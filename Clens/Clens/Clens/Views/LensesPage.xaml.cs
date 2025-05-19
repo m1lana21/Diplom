@@ -64,6 +64,8 @@ namespace Clens
             else
             {
                 endDate.Text = null;
+                EndDateStackLayout.IsVisible = false; 
+                //removeButton.IsVisible = false;
             }
         }
 
@@ -102,6 +104,8 @@ namespace Clens
             timeMeasurementLabel.IsVisible = true;
             nullDataLabel.IsVisible = false;
             resetLensesLabel.IsVisible = true;
+            EndDateStackLayout.IsVisible = true;
+            //removeButton.IsVisible = true;
 
             if (Convert.ToInt32(countTimeLabel.Text) <= 0)
             {
@@ -112,7 +116,7 @@ namespace Clens
                 countTimeLabel.IsVisible = false;
                 timeMeasurementLabel.IsVisible = false;
                 resetLensesLabel.IsVisible = false;
-                
+
             }
             NotificationCenter.Current.Cancel(1234);
             StartLensCheckService();
@@ -138,13 +142,22 @@ namespace Clens
 
         private async Task SaveLensesData(string startDate, string type)
         {
-            var realEndDate = DateTime.Today.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
-            var lensesData = new { StartDate = startDate, Type = type, EndDate = realEndDate };
-            var firebaseService = new FirebaseService();
-            string userUid = await firebaseService.GetUserUidAsync();
-            var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
-            await firebase.Child("Users").Child(userUid).Child("History").PostAsync(lensesData);
-            
+            try
+            {
+                var realEndDate = DateTime.Today.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
+                var lensesData = new { StartDate = startDate, Type = type, EndDate = realEndDate };
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+                await firebase.Child("Users").Child(userUid).Child("History").PostAsync(lensesData);
+                Debug.WriteLine($"ЮЗЕР, {userUid}");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
+
+
         }
 
         public void ClearInfo()
@@ -156,7 +169,7 @@ namespace Clens
             timeMeasurementLabel.IsVisible = false;
             nullDataLabel.IsVisible = true;
             resetLensesLabel.IsVisible = false;
-
+            EndDateStackLayout.IsVisible = false;
             Preferences.Remove("StartDateKey");
             Preferences.Remove("StartDateKeyForPush");
             Preferences.Remove(EndDateKey); 
@@ -169,7 +182,7 @@ namespace Clens
             editor.Apply();
             #endif
 
-            nullDataLabel.Text = "Тут будет написано, когда Вам нужно будет сменить линзы!";
+            nullDataLabel.Text = "Выберите дату начала носки и тип линз";
 
             UpdateRemoveButtonState();
 
@@ -184,9 +197,7 @@ namespace Clens
             {
                 ClearInfo();
                 NotificationCenter.Current.Cancel(1234);
-                // Сбрасываем дату последнего уведомления
                 Preferences.Remove("LastNotificationDate");
-                // Перезапускаем сервис
                 StopLensCheckService();
                 StartLensCheckService();
             }
@@ -196,11 +207,10 @@ namespace Clens
         {
             if (lensTypePicker.SelectedItem != null)
             {
+                UpdateReplacementDate(null, null); 
                 ClearInfo();
                 NotificationCenter.Current.Cancel(1234);
-                // Сбрасываем дату последнего уведомления
                 Preferences.Remove("LastNotificationDate");
-                // Перезапускаем сервис
                 StopLensCheckService();
                 StartLensCheckService();
             }

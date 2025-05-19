@@ -1,28 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.LensesPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Spacing="20" Padding="20">
-                <Frame BackgroundColor="#B5DDA4" CornerRadius="15" Padding="20">
-                    <StackLayout>
-                        <Label Text="Смените линзы через" x:Name="resetLensesLabel" IsVisible="false" HorizontalOptions="Center" Margin="0,10,0,0"  TextColor="Black" FontSize="24" />
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
-                            <Label FontSize="40" TextColor="Black" x:Name="countTimeLabel" IsVisible="false"/>
-                            <Label FontSize="40" Text=" дней" TextColor="Black" x:Name="timeMeasurementLabel" IsVisible="false"/>
-                        </StackLayout>
-                        <Label x:Name="nullDataLabel" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center"  Text="Тут будет написано, когда Вам нужно будет сменить линзы!" TextColor="Black"></Label>
-                    </StackLayout>
-                </Frame>
-                <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Padding="20">
+            <StackLayout Spacing="20" Padding="20" VerticalOptions="CenterAndExpand">
+                <StackLayout x:Name="DaysLeftStackLayout" Orientation="Vertical" HorizontalOptions="Center">
+                    <Label FontSize="22" Text="Замените линзы через" VerticalOptions="Center"  TextColor="Gray"  FontAttributes="Bold" x:Name="resetLensesLabel" IsVisible="false"/>
+                    <Label FontSize="50" TextColor="#B5DDA4" VerticalOptions="Center" HorizontalOptions="Center"  HorizontalTextAlignment="Center" FontAttributes="Bold" x:Name="countTimeLabel" IsVisible="false"/>
+                    <Label FontSize="22" Text=" дней" TextColor="Gray" FontAttributes="Bold" HorizontalOptions="Center"  x:Name="timeMeasurementLabel" IsVisible="false"/>
+                <Label x:Name="nullDataLabel" FontSize="30" HorizontalTextAlignment="Center" HorizontalOptions="Center" Text="Выберите дату начала носки и тип линз" TextColor="#B5DDA4"></Label>
+                </StackLayout>
+            <Frame BackgroundColor="White" HasShadow="True" BorderColor="#B5DDA4" CornerRadius="15" Padding="20">
                     <StackLayout>
                         <StackLayout Margin="0,0,0,10">
                             <Label Text="НАЧАЛЬНАЯ ДАТА:" TextColor="Gray" FontSize="20" />
                             <DatePicker x:Name="startDate" FontSize="20" Format="dd MMMM yyyy" DateSelected="startDate_DateSelected"/>
                         </StackLayout>
-                        <StackLayout Margin="0,0,0,10">
-                            <Label Text="ЗАМЕНИТЕ ЛИНЗЫ:" TextColor="Gray" FontSize="20" />
-                            <Label x:Name="endDate" FontSize="20" TextColor="Black"/>
-                        </StackLayout>
+                        
+                        
                         <Label Text="ТИП ЛИНЗ:" TextColor="Gray" FontSize="20" Margin="0,5,0,0" />
                         <Picker x:Name="lensTypePicker" Title="Укажите тип линз" FontSize="20" SelectedIndexChanged="lensTypePicker_SelectedIndexChanged">
                             <Picker.Items>
@@ -33,6 +26,10 @@
                                 <x:String>Годовые</x:String>
                             </Picker.Items>
                         </Picker>
+                        <StackLayout x:Name="EndDateStackLayout" Margin="0,0,0,10">
+                            <Label Text="ЗАМЕНИТЕ ЛИНЗЫ:" TextColor="Gray" FontSize="20" />
+                            <Label x:Name="endDate" FontSize="20" TextColor="Black"/>
+                        </StackLayout>
                         <Button Text="Снять линзы" x:Name="removeButton" Clicked="removeButton_Clicked"></Button>
                         <Label Text="ОЧИСТИТЬ" HorizontalOptions="Center" x:Name="clearLabel"  TextColor="#B5DDA4" FontSize="25">
                             <Label.GestureRecognizers>
@@ -42,6 +39,5 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

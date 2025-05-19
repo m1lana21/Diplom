@@ -1,34 +1,104 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Clens.AccountPage">
-    <ContentPage.Content>
-        <Grid BackgroundColor="White" RowDefinitions="Auto,*" VerticalOptions="FillAndExpand">
-            <StackLayout Grid.Row="0" Spacing="20" Padding="10">
-                
-                <Frame HasShadow="False" CornerRadius="50" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Image Source="account.png" Aspect="AspectFill"/>
-                </Frame>
+             x:Class="Clens.AccountPage"
+             BackgroundColor="White">
 
-                <Label x:Name="LoginLabel" FontSize="30" FontFamily="Comfortaa-Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
-                <StackLayout Orientation="Horizontal" >
-                    <Label FontSize="20" Text="Почта: " HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Padding="0,5,0,0"/>
-                    <Label x:Name="EmailLabel" FontSize="20" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" Padding="0,5,0,0"/>
-                </StackLayout>
-                
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Информация о пользователе -->
+            <StackLayout Spacing="15" HorizontalOptions="Center">
+                <!-- Аватар и логин -->
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                        <Label Text="Пароль: " FontSize="20"></Label>
-                        <Entry x:Name="PasswordEntry" HeightRequest="40" MinimumWidthRequest="500" FontSize="20" Placeholder="Пароль" IsPassword="True" IsReadOnly="True"></Entry>
-                    <ImageButton x:Name="PasswordButton" Source="edit.png" HeightRequest="40" WidthRequest="40" Clicked="PasswordButton_Clicked"></ImageButton>
+                    <Frame CornerRadius="30" HeightRequest="60" WidthRequest="60" Padding="0"
+                           BackgroundColor="Transparent" BorderColor="#B5DDA4">
+                        <Image Source="account.png" Aspect="AspectFill"/>
+                    </Frame>
+                    <Label x:Name="LoginLabel"
+                           FontSize="26"
+                           FontFamily="Comfortaa-Bold"
+                           TextColor="#333333"
+                           VerticalTextAlignment="Center"/>
                 </StackLayout>
-                
+
+                <!-- Почта -->
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Label Text="Почта:" FontSize="18" TextColor="Gray"/>
+                    <Label x:Name="EmailLabel" FontSize="18" TextColor="#333333"/>
+                </StackLayout>
             </StackLayout>
-            
-            <Label Grid.Row="1" Text="ВЫЙТИ" TextColor="Red" HorizontalOptions="Center" VerticalOptions="End" FontSize="25" Padding="15">
+
+            <!-- Архив справок -->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="10">
+                    <Label Text="Архив справок"
+                           FontSize="22"
+                           FontFamily="Comfortaa-Bold"
+                           TextColor="#333333"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="StartAndExpand"/>
+                    <ImageButton Source="add.png"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 BackgroundColor="Transparent"
+                                 Clicked="AddButton_Clicked"/>
+                </StackLayout>
+
+                <!-- Список файлов -->
+                <Frame CornerRadius="15" HasShadow="True" BorderColor="#EEEEEE">
+                    <ListView x:Name="FilesListView"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="None"
+                              ItemTapped="FilesListView_ItemTapped"
+                              BackgroundColor="White"
+                              VerticalOptions="FillAndExpand"
+                              HeightRequest="300">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <StackLayout Orientation="Horizontal" Padding="10">
+                                        <!--<Image Source="{Binding ThumbnailUrl}" WidthRequest="60" HeightRequest="60" />-->
+                                        <Label Text="{Binding Filename}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                        <ImageButton Grid.Column="1"
+                                             Source="delete.png"
+                                             HeightRequest="25"
+                                             WidthRequest="25"
+                                             BackgroundColor="Transparent"
+                                             CommandParameter="{Binding PublicId}"
+                                             Clicked="DeleteButton_Clicked"/>
+                                    </StackLayout>
+
+                                    <!--<Grid Padding="15,10" ColumnDefinitions="*,Auto">
+                                        <Label Text="{Binding Filename}"
+                                               FontSize="16"
+                                               TextColor="#333333"
+                                               VerticalTextAlignment="Center"/>
+                                        <ImageButton Grid.Column="1"
+                                                     Source="delete.png"
+                                                     HeightRequest="25"
+                                                     WidthRequest="25"
+                                                     BackgroundColor="Transparent"
+                                                     CommandParameter="{Binding PublicId}"
+                                                     Clicked="DeleteButton_Clicked"/>
+                                    </Grid>-->
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </StackLayout>
+
+            <!-- Выход -->
+            <Label Text="ВЫЙТИ"
+                   TextColor="Red"
+                   HorizontalOptions="Center"
+                   FontSize="25"
+                   Padding="10">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-        </Grid>
-    </ContentPage.Content>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
