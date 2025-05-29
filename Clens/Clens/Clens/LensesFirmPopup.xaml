@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Clens.LensesFirmPopup" xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <Frame HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
+        <StackLayout>
+            <StackLayout Margin="0,0,0,10">
+                <Entry x:Name="FirmEntry" Placeholder ="Введите название фирмы линз" FontSize="25"  Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Button x:Name="saveButton" Text="сохранить" Margin="0,0,0,5" Clicked="saveButton_Clicked"></Button>
+            <Label Text="ОТМЕНА" HorizontalOptions="Center" x:Name="cancelLabel"  TextColor="#B5DDA4" FontSize="25">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped ="cancelLabel_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="УДАЛИТЬ" HorizontalOptions="Center" x:Name="deleteLabel"  TextColor="red" FontSize="25">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped ="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </Frame>
+</popup:PopupPage>

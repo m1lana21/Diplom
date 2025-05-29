@@ -2247,15 +2247,6 @@ D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ConvertReso
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 D:\Study\Диплом\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.Android.dll
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.Android.pdb
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens.apk
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens.aab
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.aab
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.apk
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.apk.idsig
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.dll
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.pdb
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\MonoAndroid,Version=v13.0.AssemblyAttributes.cs
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\build.props
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\adb.props
@@ -2293,6 +2284,15 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\lp\126\jl\f
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\R.txt
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\R.cs.flag
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\Clens.Android.csproj.CoreCompileInputs.cache
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.Android.dll
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.Android.pdb
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens.apk
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens.aab
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.aab
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.apk
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\com.companyname.Clens-Signed.apk.idsig
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.dll
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\bin\Debug\Clens.pdb
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\Clens.An.AB200D7E.Up2Date
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\Clens.Android.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\Clens.Android.pdb
@@ -2325,6 +2325,7 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawabl
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\eye.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\emptyhistory.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\add.png
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\calendar.png
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\uploadflags.txt
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\resolvedassemblies.hash
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Acr.UserDialogs.dll
@@ -2334,6 +2335,7 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\ass
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Clens.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Clens.pdb
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\CloudinaryDotNet.dll
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\dotenv.net.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Firebase.Auth.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\Firebase.dll
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\FirebaseAuth.dll
@@ -2885,6 +2887,7 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\BatteryBroadcastReceiver.java
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\ClipboardChangeListener.java
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\ConnectivityBroadcastReceiver.java
+D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\Connectivity_EssentialsNetworkCallback.java
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\EnergySaverBroadcastReceiver.java
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\GyroscopeListener.java
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\src\crc64a0e0a82d0db9a07d\IntermediateActivity.java
@@ -3051,5 +3054,3 @@ D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_Conv
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GenerateJavaStubs.stamp
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_GeneratePackageManagerJava.stamp
 D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\stamp\_ResolveLibraryProjectImports.stamp
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\android\assets\dotenv.net.dll
-D:\Study\Диплом\Diplom\Clens\Clens\Clens.Android\obj\Debug\130\res\drawable\calendar.png

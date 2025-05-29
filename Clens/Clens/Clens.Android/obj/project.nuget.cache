@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FhybNcWDUBI=",
+  "dgSpecHash": "ZZtNUhB4Dqo=",
   "success": true,
   "projectFilePath": "D:\\Study\\Диплом\\Diplom\\Clens\\Clens\\Clens.Android\\Clens.Android.csproj",
   "expectedPackageFiles": [
@@ -152,7 +152,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.androidx.viewpager2\\1.0.0.10\\xamarin.androidx.viewpager2.1.0.0.10.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.androidx.work.runtime\\2.4.0.1\\xamarin.androidx.work.runtime.2.4.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.essentials\\1.8.1\\xamarin.essentials.1.8.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.auth\\119.3.1\\xamarin.firebase.auth.119.3.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.auth.interop\\119.0.0\\xamarin.firebase.auth.interop.119.0.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.firebase.common\\119.3.0\\xamarin.firebase.common.119.3.0.nupkg.sha512",
@@ -163,19 +163,10 @@
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.base\\117.2.1\\xamarin.googleplayservices.base.117.2.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.basement\\117.2.1\\xamarin.googleplayservices.basement.117.2.1.nupkg.sha512",
-    "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.tasks\\117.0.2\\xamarin.googleplayservices.tasks.117.0.2.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.googleplayservices.tasks\\117.0.2\\xamarin.googleplayservices.tasks.117.0.2.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\xamarin.plugin.calendar\\2.0.9699\\xamarin.plugin.calendar.2.0.9699.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Обнаружено понижение версии пакета Xamarin.Essentials с 1.8.1 на 1.7.0. Чтобы выбрать другую версию, создайте ссылку на пакет напрямую из проекта. \r\n Clens.Android -> Clens -> Xamarin.Essentials (>= 1.8.1) \r\n Clens.Android -> Xamarin.Essentials (>= 1.7.0)",
-      "libraryId": "Xamarin.Essentials",
-      "targetGraphs": [
-        "MonoAndroid,Version=v13.0"
-      ]
-    },
     {
       "code": "NU1605",
       "level": "Warning",

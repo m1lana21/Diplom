@@ -1,12 +1,31 @@
-﻿<Shell  xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:Clens" xmlns:local1="clr-namespace:Clens"
-       x:Class="Clens.AppShell">
-    
+       xmlns:local="clr-namespace:Clens"
+       x:Class="Clens.AppShell"
+       Title="Clens">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <!-- Убрал все StaticResource -->
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+
+            <!-- Обязательно добавить эти строки -->
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
     <TabBar>
-        <ShellContent Title="Линзы"  Route="LensesPage" ContentTemplate="{DataTemplate local:LensesPage}" />
+        <ShellContent Title="Линзы" Route="LensesPage" ContentTemplate="{DataTemplate local:LensesPage}" />
         <ShellContent Title="История" Route="HistoryPage" ContentTemplate="{DataTemplate local:HistoryPage}"/>
-        <ShellContent Title="Карты" Route="MapPage" ContentTemplate="{DataTemplate local:MapPage}"/>
         <ShellContent Title="Профиль" Route="AccountPage" ContentTemplate="{DataTemplate local:AccountPage}"/>
     </TabBar>
 </Shell>

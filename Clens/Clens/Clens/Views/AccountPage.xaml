@@ -5,7 +5,6 @@
 
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
-
             <!-- Информация о пользователе -->
             <StackLayout Spacing="15" HorizontalOptions="Center">
                 <!-- Аватар и логин -->
@@ -27,7 +26,7 @@
                     <Label x:Name="EmailLabel" FontSize="18" TextColor="#333333"/>
                 </StackLayout>
             </StackLayout>
-
+            
             <!-- Архив справок -->
             <StackLayout>
                 <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="10">
@@ -68,20 +67,6 @@
                                              CommandParameter="{Binding PublicId}"
                                              Clicked="DeleteButton_Clicked"/>
                                     </StackLayout>
-
-                                    <!--<Grid Padding="15,10" ColumnDefinitions="*,Auto">
-                                        <Label Text="{Binding Filename}"
-                                               FontSize="16"
-                                               TextColor="#333333"
-                                               VerticalTextAlignment="Center"/>
-                                        <ImageButton Grid.Column="1"
-                                                     Source="delete.png"
-                                                     HeightRequest="25"
-                                                     WidthRequest="25"
-                                                     BackgroundColor="Transparent"
-                                                     CommandParameter="{Binding PublicId}"
-                                                     Clicked="DeleteButton_Clicked"/>
-                                    </Grid>-->
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

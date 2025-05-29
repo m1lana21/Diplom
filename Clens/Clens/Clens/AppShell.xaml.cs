@@ -22,8 +22,6 @@ namespace Clens
         {
             Routing.RegisterRoute(nameof(LensesPage), typeof(LensesPage));
             Routing.RegisterRoute(nameof(HistoryPage), typeof(HistoryPage));
-            Routing.RegisterRoute(nameof(MapPage), typeof(MapPage));
-            Routing.RegisterRoute(nameof(AccountPage), typeof(AccountPage));
             Debug.WriteLine("Маршруты зарегистрированы.");
         }
     }

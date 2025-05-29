@@ -104,6 +104,10 @@
               "target": "Package",
               "version": "[5.0.0.2662, )"
             },
+            "Xamarin.Plugin.Calendar": {
+              "target": "Package",
+              "version": "[2.0.9699, )"
+            },
             "dotenv.net": {
               "target": "Package",
               "version": "[3.2.1, )"

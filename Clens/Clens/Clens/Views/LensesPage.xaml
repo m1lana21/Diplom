@@ -26,7 +26,15 @@
                                 <x:String>Годовые</x:String>
                             </Picker.Items>
                         </Picker>
-                        <StackLayout x:Name="EndDateStackLayout" Margin="0,0,0,10">
+
+                    <Label Text="ФИРМА ЛИНЗ:" TextColor="Gray" FontSize="20" Margin="0,5,0,0" />
+                    <Label x:Name="FirmLabel" FontSize="20" Text="Укажите фирму линз">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FirmLensPicker_SelectedIndexChanged"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <StackLayout x:Name="EndDateStackLayout" Margin="0,0,0,10">
                             <Label Text="ЗАМЕНИТЕ ЛИНЗЫ:" TextColor="Gray" FontSize="20" />
                             <Label x:Name="endDate" FontSize="20" TextColor="Black"/>
                         </StackLayout>

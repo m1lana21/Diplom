@@ -11,6 +11,11 @@ using System.Diagnostics;
 using Plugin.LocalNotification;
 using System.Security.Cryptography;
 using Xamarin.Forms.PlatformConfiguration;
+using Acr.UserDialogs.Infrastructure;
+using System.Collections.Generic;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using System.Collections.ObjectModel;
 
 namespace Clens
 {
@@ -21,12 +26,14 @@ namespace Clens
         private const string StartDateKeyForPush = "StartDateForPush";
         private const string EndDateKey = "EndDate";
         private const string TypeKey = "TypeKey";
+        private readonly object firebase;
         private bool _notificationSent = false;
 
         public LensesPage()
         {
             InitializeComponent();
             LoadSavedData();
+
             if (startDate == null)
             {
                 startDate.Date = DateTime.Now.Date;
@@ -36,12 +43,16 @@ namespace Clens
                 lensTypePicker.SelectedItem = Preferences.Get(TypeKey, string.Empty);
             }
 
+            
+
+            
             UpdateRemoveButtonState();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await LoadSelectedFirm();
         }
 
         private void LoadSavedData()
@@ -65,7 +76,6 @@ namespace Clens
             {
                 endDate.Text = null;
                 EndDateStackLayout.IsVisible = false; 
-                //removeButton.IsVisible = false;
             }
         }
 
@@ -105,7 +115,6 @@ namespace Clens
             nullDataLabel.IsVisible = false;
             resetLensesLabel.IsVisible = true;
             EndDateStackLayout.IsVisible = true;
-            //removeButton.IsVisible = true;
 
             if (Convert.ToInt32(countTimeLabel.Text) <= 0)
             {
@@ -270,7 +279,94 @@ namespace Clens
 #endif
         }
 
-        
+        private async void FirmLensPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var popup = new LensesFirmListPopup(_standardFirms);
+
+            popup.FirmSelected += async (s, selectedFirm) =>
+            {
+                if (!string.IsNullOrEmpty(selectedFirm))
+                {
+                    await SaveFirmToFirebase(selectedFirm);
+                    FirmLabel.Text = selectedFirm;
+
+                    if (!_standardFirms.Contains(selectedFirm))
+                    {
+                        _standardFirms.Add(selectedFirm);
+                    }
+                }
+            };
+
+            await PopupNavigation.Instance.PushAsync(popup);
+        }
+
+        public async Task<string> GetUserSelectedFirm()
+        {
+            try
+            {
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+
+                if (string.IsNullOrEmpty(userUid)) return null;
+
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+                var snapshot = await firebase
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("LensesFirm")
+                    .OnceSingleAsync<string>();
+
+                return snapshot;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при получении фирмы: {ex.Message}");
+                return null;
+            }
+        }
+
+        private async Task LoadSelectedFirm()
+        {
+            try
+            {
+                var firm = await GetUserSelectedFirm();
+                if (!string.IsNullOrEmpty(firm))
+                {
+                    FirmLabel.Text = firm;
+                    if (!_standardFirms.Contains(firm))
+                    {
+                        _standardFirms.Add(firm);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка загрузки фирмы: {ex.Message}");
+            }
+        }
+
+        private async Task SaveFirmToFirebase(string firm)
+        {
+            try
+            {
+                var userUid = await new FirebaseService().GetUserUidAsync();
+                await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/")
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("LensesFirm")
+                    .PutAsync(firm.Trim());
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", $"Не удалось сохранить: {ex.Message}", "OK");
+            }
+        }
+
+        private readonly List<string> _standardFirms = new List<string>
+        {
+            "ACUVUE", "Dailies", "Air Optix Aqua", "Biomedics",
+            "Proclear", "PureVision", "Biotrue"
+        };
     }
 
 

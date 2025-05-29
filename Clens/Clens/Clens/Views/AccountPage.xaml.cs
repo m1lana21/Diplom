@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs.Infrastructure;
+using Clens;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using dotenv.net;
@@ -108,7 +109,6 @@ namespace Clens
         {
             try
             {
-                // Проверка разрешений для Android
                 var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
                 if (status != PermissionStatus.Granted)
                 {
@@ -120,11 +120,7 @@ namespace Clens
                     }
                 }
 
-                // Выбор файла
-                var fileResult = await FilePicker.PickAsync(new PickOptions
-                {
-                    PickerTitle = "Выберите файл",
-                });
+                var fileResult = await FilePicker.PickAsync(PickOptions.Default);
 
                 if (fileResult == null) return;
 
@@ -135,16 +131,12 @@ namespace Clens
                     return;
                 }
 
-                string userId = await UserUIDAsync(); // Ваш метод получения ID пользователя
+                string userId = await UserUIDAsync();
                 string folderPath = $"users/{userId}";
 
                 using (var stream = await fileResult.OpenReadAsync())
                 {
-                    // Определяем тип файла
-                    bool isImage = fileResult.FileName.ToLower().EndsWith(".jpg") ||
-                                  fileResult.FileName.ToLower().EndsWith(".jpeg") ||
-                                  fileResult.FileName.ToLower().EndsWith(".png");
-                    fileResult.FileName.ToLower().EndsWith(".pdf");
+                    bool isImage = ext == ".jpg" || ext == ".jpeg" || ext == ".png";
 
                     var uploadResult = isImage
                         ? await UploadImageAsync(stream, fileResult.FileName, folderPath)
@@ -152,7 +144,8 @@ namespace Clens
 
                     if (uploadResult.Error == null)
                     {
-                        await DisplayAlert("Успех", $"Файл загружен!\nPublic ID: {uploadResult.PublicId}", "OK");
+                        await DisplayAlert("Успех", "Файл загружен!", "OK");
+                        LoadFiles();
                     }
                     else
                     {
@@ -165,6 +158,7 @@ namespace Clens
                 await DisplayAlert("Ошибка", ex.Message, "OK");
             }
         }
+
 
         private async Task<ImageUploadResult> UploadImageAsync(Stream stream, string fileName, string folderPath)
         {
@@ -268,5 +262,8 @@ namespace Clens
             }
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+        }
     }
 }

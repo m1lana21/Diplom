@@ -125,3 +125,4 @@ androidx.sqlite.sqlite-framework.aar
 androidx.room.room-runtime.aar
 androidx.lifecycle.lifecycle-service.aar
 androidx.work.work-runtime.aar
+Xamarin.Plugin.Calendar.dll

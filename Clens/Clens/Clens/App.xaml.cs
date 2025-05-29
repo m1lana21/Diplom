@@ -8,18 +8,16 @@ using Xamarin.Essentials;
 using Plugin.LocalNotification;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using Clens;
 namespace Clens
 {
     public partial class App : Application
     {
-        public static CloudinaryService CloudinaryService { get; private set; }
 
         public App()
         {
             InitializeComponent();
-            CloudinaryService = new CloudinaryService();
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
-            UserAppTheme = OSAppTheme.Light;
+
             bool isRemembered = Preferences.Get("IsRemembered", false);
             var authToken = SecureStorage.GetAsync("UserToken").Result;
 
@@ -41,6 +39,13 @@ namespace Clens
             navigationPage.BarBackgroundColor = Color.FromHex("#B5DDA4");
             navigationPage.BarTextColor = Color.Black;
             MainPage = navigationPage;
+
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("ru-RU");
+            UserAppTheme = OSAppTheme.Light;
+            
+
+            
         }
 
        

@@ -1,16 +1,27 @@
-﻿using Android.App;
-using Plugin.CurrentActivity;
+﻿// В Android-проекте
+using Android.App;
+using Android.OS;
 using Clens;
+using Clens.Droid;
+using Plugin.CurrentActivity;
 using Xamarin.Forms;
-
-[assembly: Dependency(typeof(Clens.Droid.CurrentActivityProvider))]
-namespace Clens.Droid
+// В Clens.Android
+[assembly: Dependency(typeof(CurrentActivityProvider))]
+public class CurrentActivityProvider : ICurrentActivityProvider
 {
-    public class CurrentActivityProvider : ICurrentActivityProvider
+    public void InitActivity()
     {
-        public object GetCurrentActivity()
+        var activity = MainActivity.Instance;
+        if (activity != null)
         {
-            return CrossCurrentActivity.Current.Activity;
+            Xamarin.Essentials.Platform.Init(activity, new Android.OS.Bundle());
+            CrossCurrentActivity.Current.Init(activity, new Android.OS.Bundle());
         }
+    }
+
+    public object GetCurrentActivity()
+    {
+        return Xamarin.Essentials.Platform.CurrentActivity ??
+               CrossCurrentActivity.Current.Activity;
     }
 }

@@ -25,6 +25,7 @@ namespace Clens
             DeleteSpace(PasswordEntry);
         }
 
+        
         protected override async void OnAppearing()
         {
             base.OnAppearing();
