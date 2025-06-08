@@ -10,6 +10,7 @@ using AndroidX.AppCompat.App;
 using Plugin.FirebaseAuth;
 using Firebase;
 using Plugin.CurrentActivity;
+using System.Globalization;
 
 namespace Clens.Droid
 {
@@ -23,6 +24,8 @@ namespace Clens.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             Instance = this;
+
+            
 
             base.OnCreate(savedInstanceState);
 

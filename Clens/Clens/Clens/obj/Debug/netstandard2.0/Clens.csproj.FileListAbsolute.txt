@@ -74,7 +74,6 @@ D:\Study\Диплом\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.pdb
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.csproj.AssemblyReference.cache
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\Clens.GeneratedMSBuildEditorConfig.editorconfig
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\App.xaml.g.cs
-D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\AuthPage.xaml.g.cs
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\EditPage.xaml.g.cs
 D:\Study\Диплом\Diplom\Clens\Clens\Clens\obj\Debug\netstandard2.0\LensesFirmPopup.xaml.g.cs

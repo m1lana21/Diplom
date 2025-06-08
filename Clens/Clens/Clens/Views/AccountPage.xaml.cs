@@ -168,7 +168,7 @@ namespace Clens
                 PublicId = $"{folderPath}/{Path.GetFileNameWithoutExtension(fileName)}_{Guid.NewGuid()}",
                 Folder = folderPath,
                 Overwrite = false,
-                QualityAnalysis = true // Анализ качества (из документации)
+                QualityAnalysis = true
             };
 
             return await CloudinaryService.Instance.UploadAsync(uploadParams);
@@ -206,7 +206,6 @@ namespace Clens
                     _files.Add(file);
                 }
 
-                //EmptyListLabel.IsVisible = !_files.Any();
             }
             catch (Exception ex)
             {
@@ -252,7 +251,7 @@ namespace Clens
             {
                 try
                 {
-                    await Launcher.OpenAsync(new Uri(file.Url));
+                    await Browser.OpenAsync(file.Url, BrowserLaunchMode.SystemPreferred);
                 }
                 catch (Exception ex)
                 {
@@ -262,8 +261,9 @@ namespace Clens
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void ImageButton_Clicked(object sender, EventArgs e)
         {
+
         }
     }
 }

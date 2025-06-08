@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:Clens.Converters" x:Class="Clens.App">
     <Application.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"></Setter>
@@ -26,17 +26,10 @@
             <Setter Property="FontFamily" Value = "Comfortaa-Light"></Setter>
         </Style>
 
-        <!--<ResourceDictionary>
-            <Color x:Key="ShellBackgroundColor">White</Color>
-            <Color x:Key="ShellForegroundColor">Black</Color>
-            <Color x:Key="ShellTitleColor">Black</Color>
-            <Color x:Key="ShellDisabledColor">#B5DDA4</Color>
-            <Color x:Key="ShellUnselectedColor">#B5DDA4</Color>
-            <Color x:Key="ShellTabBarBackgroundColor">White</Color>
-            <Color x:Key="ShellTabBarForegroundColor">Black</Color>
-            <Color x:Key="ShellTabBarTitleColor">#B5DDA4</Color>
-            <Color x:Key="ShellTabBarUnselectedColor">Black</Color>
-        </ResourceDictionary>-->
+        <ResourceDictionary>
+            <converters:IsNotStandardFirmConverter x:Key="IsNotStandardFirmConverter" />
+        </ResourceDictionary>
+
     </Application.Resources>
     
 </Application>

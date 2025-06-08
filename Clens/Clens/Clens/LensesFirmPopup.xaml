@@ -14,11 +14,6 @@
                     <TapGestureRecognizer Tapped ="cancelLabel_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="УДАЛИТЬ" HorizontalOptions="Center" x:Name="deleteLabel"  TextColor="red" FontSize="25">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped ="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
         </StackLayout>
     </Frame>
 </popup:PopupPage>

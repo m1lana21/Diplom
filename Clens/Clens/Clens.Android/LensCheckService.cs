@@ -19,7 +19,6 @@ namespace Clens.Droid
 
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            //Xamarin.Essentials.Platform.Init((Application)Application.Context);
             _cts = new CancellationTokenSource();
             Task.Run(() => RunAsync(_cts.Token), _cts.Token);
             StartForeground(1001, CreateForegroundNotification("Clens отслеживает срок линз"));

@@ -21,13 +21,13 @@ public class CloudinaryService
 
     public static Cloudinary Instance => _cloudinary.Value;
 
+
     public async Task<List<CloudinaryFile>> GetUserFilesAsync(string userId)
     {
         try
         {
             var files = new List<CloudinaryFile>();
 
-            // Получаем изображения
             var imagesResult = await Instance.ListResourcesAsync(new ListResourcesParams
             {
                 Type = "upload",
@@ -43,10 +43,10 @@ public class CloudinaryService
                     Filename = Path.GetFileName(resource.PublicId),
                     PublicId = resource.PublicId,
                     Url = resource.SecureUrl.ToString()
+
                 });
             }
 
-            // Получаем PDF-файлы
             var pdfsResult = await Instance.ListResourcesAsync(new ListResourcesParams
             {
                 Type = "upload",
@@ -101,4 +101,5 @@ public class CloudinaryFile
     public string Filename { get; set; }
     public string PublicId { get; set; }
     public string Url { get; set; }
+    //public string ThumbnailUrl { get; set; }
 }

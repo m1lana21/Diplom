@@ -4,31 +4,46 @@
              x:Class="Clens.LensesFirmListPopup" xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
     <Frame HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" HeightRequest="600" WidthRequest="300" Margin="0,80,0,0" Padding="15" CornerRadius="15">
         <StackLayout>
-            <Label Text="Выберите фирму"
-               FontSize="25"
-               HorizontalOptions="Center"
-               Margin="0,0,0,20"/>
+            <Label Text="Выберите фирму линз" 
+           FontSize="20"
+           HorizontalOptions="Center"
+           Margin="0,0,0,10"/>
 
-        <ListView x:Name="firmsListView"
-                  HasUnevenRows="True"
-                  SeparatorVisibility="None">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding .}"
-                               FontSize="25"
-                               Margin="10"
+            <ListView x:Name="firmsListView"
+              SelectionMode="Single"
+              ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label FontSize="20" Text="{Binding .}"
                                VerticalOptions="Center"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-            <Button Text="ОК" Clicked="Button_Clicked"/>
-            <Button Text="Свой вариант" Clicked="OnCustomFirmClicked"/>
-            <Button Text="Отмена" Clicked="OnCancelClicked" Margin="20,0,0,0"/>
-            <Button Text="Удалить" Clicked="Button_Clicked_1"  Margin="20,0,0,0"/>
-        </StackLayout>
-        
 
+                                <ImageButton Source="delete.png" 
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                Grid.Column="1"
+                                CommandParameter="{Binding .}"
+                                Clicked="OnDeleteClicked"
+                                IsVisible="{Binding ., Converter={StaticResource IsNotStandardFirmConverter}}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Свой вариант"
+            Clicked="OnCustomFirmClicked"
+            />
+
+            <Button Text="Отмена"
+            Clicked="OnCancelClicked"
+            />
+        </StackLayout>
     </Frame>
 </popup:PopupPage>

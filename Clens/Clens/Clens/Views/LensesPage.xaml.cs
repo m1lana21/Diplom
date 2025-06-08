@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using System.Collections.ObjectModel;
+using Rg.Plugins.Popup.Pages;
 
 namespace Clens
 {
@@ -53,6 +54,7 @@ namespace Clens
         {
             base.OnAppearing();
             await LoadSelectedFirm();
+            await LoadCustomFirms();
         }
 
         private void LoadSavedData()
@@ -154,12 +156,19 @@ namespace Clens
             try
             {
                 var realEndDate = DateTime.Today.ToString("dd MMMM yyyy", new CultureInfo("ru-RU"));
-                var lensesData = new { StartDate = startDate, Type = type, EndDate = realEndDate };
+                var lensesData = new
+                {
+                    StartDate = startDate,
+                    Type = type,
+                    // Если фирма не выбрана (текст по умолчанию), сохраняем null
+                    LensesFirm = FirmLabel.Text == "Укажите фирму линз" ? null : FirmLabel.Text,
+                    EndDate = realEndDate
+                };
+
                 var firebaseService = new FirebaseService();
                 string userUid = await firebaseService.GetUserUidAsync();
                 var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
                 await firebase.Child("Users").Child(userUid).Child("History").PostAsync(lensesData);
-                Debug.WriteLine($"ЮЗЕР, {userUid}");
             }
             catch (Exception ex)
             {
@@ -169,8 +178,11 @@ namespace Clens
 
         }
 
-        public void ClearInfo()
+        public async void ClearInfo()
         {
+            var _firebaseClient = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+            var firebaseService = new FirebaseService();
+            string userUid = await firebaseService.GetUserUidAsync();
             startDate.Date = DateTime.Today;
             endDate.Text = null;  
             lensTypePicker.SelectedItem = null; 
@@ -179,6 +191,8 @@ namespace Clens
             nullDataLabel.IsVisible = true;
             resetLensesLabel.IsVisible = false;
             EndDateStackLayout.IsVisible = false;
+            FirmLabel.Text = "Укажите фирму линз";
+            await _firebaseClient.Child("Users").Child(userUid).Child("LensesFirm").DeleteAsync();
             Preferences.Remove("StartDateKey");
             Preferences.Remove("StartDateKeyForPush");
             Preferences.Remove(EndDateKey); 
@@ -212,11 +226,18 @@ namespace Clens
             }
         }
 
-        private void removeButton_Clicked(object sender, EventArgs e)
+        private async void removeButton_Clicked(object sender, EventArgs e)
         {
             if (lensTypePicker.SelectedItem != null)
             {
-                UpdateReplacementDate(null, null); 
+                // Очищаем фирму линз, если была выбрана
+                if (FirmLabel.Text != "Укажите фирму линз")
+                {
+                    FirmLabel.Text = "Укажите фирму линз";
+                    await SaveFirmToFirebase(null);
+                }
+
+                UpdateReplacementDate(null, null);
                 ClearInfo();
                 NotificationCenter.Current.Cancel(1234);
                 Preferences.Remove("LastNotificationDate");
@@ -281,23 +302,74 @@ namespace Clens
 
         private async void FirmLensPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var popup = new LensesFirmListPopup(_standardFirms);
-
-            popup.FirmSelected += async (s, selectedFirm) =>
+            try
             {
-                if (!string.IsNullOrEmpty(selectedFirm))
+                var currentFirm = FirmLabel.Text;
+                var popup = new LensesFirmListPopup(_standardFirms.ToList(), currentFirm);
+
+                popup.FirmSelected += async (s, selectedFirm) =>
                 {
-                    await SaveFirmToFirebase(selectedFirm);
-                    FirmLabel.Text = selectedFirm;
-
-                    if (!_standardFirms.Contains(selectedFirm))
+                    if (selectedFirm == "Свой вариант")
                     {
-                        _standardFirms.Add(selectedFirm);
+                        // ... существующий код ...
                     }
-                }
-            };
+                    else if (!string.IsNullOrEmpty(selectedFirm))
+                    {
+                        FirmLabel.Text = selectedFirm;
+                        await SaveFirmToFirebase(selectedFirm);
+                        await SafePopPopupAsync();
+                    }
+                };
 
-            await PopupNavigation.Instance.PushAsync(popup);
+                // Добавляем обработчик отмены выбора
+                popup.FirmSelectionCleared += async (s, args) =>
+                {
+                    FirmLabel.Text = "Укажите фирму линз";
+                    await SaveFirmToFirebase(null);
+                    await SafePopPopupAsync();
+                };
+
+                popup.FirmDeleted += (s, firmToDelete) =>
+                {
+                    // ... существующий код ...
+                };
+
+                await SafePushPopupAsync(popup);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при открытии попапа: {ex.Message}");
+            }
+        }
+
+        private async Task SafePushPopupAsync(PopupPage page)
+        {
+            try
+            {
+                if (PopupNavigation.Instance.PopupStack.All(p => p.GetType() != page.GetType()))
+                {
+                    await PopupNavigation.Instance.PushAsync(page);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при открытии попапа: {ex.Message}");
+            }
+        }
+
+        private async Task SafePopPopupAsync()
+        {
+            try
+            {
+                if (PopupNavigation.Instance.PopupStack.Any())
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при закрытии попапа: {ex.Message}");
+            }
         }
 
         public async Task<string> GetUserSelectedFirm()
@@ -350,11 +422,10 @@ namespace Clens
             try
             {
                 var userUid = await new FirebaseService().GetUserUidAsync();
-                await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/")
-                    .Child("Users")
-                    .Child(userUid)
-                    .Child("LensesFirm")
-                    .PutAsync(firm.Trim());
+                await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/").Child("Users").Child(userUid).PatchAsync(new Dictionary<string, object>
+                {
+                    ["LensesFirm"] = firm
+                });
             }
             catch (Exception ex)
             {
@@ -362,11 +433,131 @@ namespace Clens
             }
         }
 
-        private readonly List<string> _standardFirms = new List<string>
+        private readonly ObservableCollection<string> _standardFirms = new ObservableCollection<string>
+    {
+        "ACUVUE", "Dailies", "Air Optix Aqua", "Biomedics",
+        "Proclear", "PureVision", "Biotrue"
+    };
+
+        private async Task LoadCustomFirms()
+        {
+            try
+            {
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+                var customFirms = await firebase
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("CustomFirms")
+                    .OnceSingleAsync<Dictionary<string, string>>();
+
+                if (customFirms != null)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        foreach (var firm in customFirms.Values)
+                        {
+                            if (!_standardFirms.Contains(firm))
+                            {
+                                _standardFirms.Add(firm);
+                            }
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка загрузки пользовательских фирм: {ex.Message}");
+            }
+        }
+
+        private bool IsStandardFirm(string firm)
+        {
+            var standardFirms = new List<string>
         {
             "ACUVUE", "Dailies", "Air Optix Aqua", "Biomedics",
             "Proclear", "PureVision", "Biotrue"
         };
+            return standardFirms.Contains(firm);
+        }
+
+        private async Task SaveCustomFirmToFirebase(string firm)
+        {
+            try
+            {
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+                // Получаем текущий список
+                var currentFirms = await firebase
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("CustomFirms")
+                    .OnceSingleAsync<Dictionary<string, string>>() ?? new Dictionary<string, string>();
+
+                // Добавляем новую фирму
+                if (!currentFirms.ContainsValue(firm))
+                {
+                    string newKey = $"firm_{DateTime.Now.Ticks}";
+                    currentFirms[newKey] = firm;
+
+                    // Сохраняем обновленный список
+                    await firebase
+                        .Child("Users")
+                        .Child(userUid)
+                        .Child("CustomFirms")
+                        .PutAsync(currentFirms);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка сохранения фирмы: {ex.Message}");
+            }
+        }
+
+        private async Task DeleteCustomFirmFromFirebase(string firm)
+        {
+            try
+            {
+                var firebaseService = new FirebaseService();
+                string userUid = await firebaseService.GetUserUidAsync();
+
+                var firebase = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+                // Получаем текущий список
+                var currentFirms = await firebase
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("CustomFirms")
+                    .OnceSingleAsync<Dictionary<string, string>>();
+
+                if (currentFirms != null)
+                {
+                    // Находим и удаляем фирму
+                    var itemToRemove = currentFirms.FirstOrDefault(x => x.Value == firm);
+                    if (!string.IsNullOrEmpty(itemToRemove.Key))
+                    {
+                        currentFirms.Remove(itemToRemove.Key);
+
+                        // Сохраняем обновленный список
+                        await firebase
+                            .Child("Users")
+                            .Child(userUid)
+                            .Child("CustomFirms")
+                            .PutAsync(currentFirms);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка удаления фирмы: {ex.Message}");
+            }
+        }
+
     }
 
 

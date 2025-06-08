@@ -90,6 +90,7 @@ public class FirebaseService
             Id = item.Key,
             StartDate = item.Object.StartDate,
             EndDate = item.Object.EndDate,
+            LensesFirm = item.Object.LensesFirm,
             Type = item.Object.Type
         }).ToList();
     }

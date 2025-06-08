@@ -7,6 +7,7 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,40 +23,19 @@ namespace Clens
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LensesFirmPopup : PopupPage
     {
+        public event EventHandler<string> FirmSaved;
+
         public LensesFirmPopup()
         {
             InitializeComponent();
-            LoadFirm();
         }
-
-        private async void LoadFirm()
-        {
-            var firebaseService = new FirebaseService();
-            string userUid = await firebaseService.GetUserUidAsync();
-
-            FirmEntry.Text = await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/")
-                .Child("Users")
-                .Child(userUid)
-                .Child("LensesFirm")
-                .OnceSingleAsync<string>();
-        }
-
-
 
         private async void saveButton_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(FirmEntry.Text))
             {
-                var firebaseService = new FirebaseService();
-                string userUid = await firebaseService.GetUserUidAsync();
-
-                await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/")
-                    .Child("Users")
-                    .Child(userUid)
-                    .Child("LensesFirm")
-                    .PutAsync(FirmEntry.Text.Trim());
-
-                await PopupNavigation.Instance.PopAsync();
+                FirmSaved?.Invoke(this, FirmEntry.Text.Trim());
+                await SafeClosePopupAsync();
             }
             else
             {
@@ -65,21 +45,22 @@ namespace Clens
 
         private async void cancelLabel_Tapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await SafeClosePopupAsync();
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async Task SafeClosePopupAsync()
         {
-            var firebaseService = new FirebaseService();
-            string userUid = await firebaseService.GetUserUidAsync();
-
-            await new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/")
-                .Child("Users")
-                .Child(userUid)
-                .Child("LensesFirm")
-                .DeleteAsync();
-
-            FirmEntry.Text = string.Empty;
+            try
+            {
+                if (PopupNavigation.Instance.PopupStack.Contains(this))
+                {
+                    await PopupNavigation.Instance.RemovePageAsync(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка при закрытии попапа: {ex.Message}");
+            }
         }
     }
 

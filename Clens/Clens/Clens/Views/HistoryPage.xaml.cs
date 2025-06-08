@@ -9,17 +9,23 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Collections.Generic;
+using Firebase.Database.Query;
 
 namespace Clens
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoryPage : ContentPage
     {
+        private FirebaseClient _firebaseClient;
+        private readonly ObservableCollection<string> _allFirms = new ObservableCollection<string>();
         private readonly FirebaseService _firebaseService;
         private ObservableCollection<HistoryItem> _allHistoryItems = new ObservableCollection<HistoryItem>();
         private ObservableCollection<HistoryItem> _filteredHistoryItems = new ObservableCollection<HistoryItem>();
         private DateTime? _selectedDate;
         private string _selectedType;
+        private string _selectedFirm;
+        private bool _dateWasSelected = false;
 
         public HistoryPage()
         {
@@ -28,10 +34,12 @@ namespace Clens
 
             HistoryListView.ItemsSource = _filteredHistoryItems;
             BindingContext = this;
-
-            SearchTypePicker.SelectedIndex = -1; // Сброс выбора типа линз
+            hiddenDatePicker.DateSelected += hiddenDatePicker_DateSelected;
+            SearchTypePicker.SelectedIndex = -1;
+            SearchFirmPicker.SelectedIndex = -1;
+            dateEntry.Text = "Выберите дату";
             _ = LoadHistoryItems();
-
+            LoadFirms().ConfigureAwait(false);
         }
 
         protected override void OnAppearing()
@@ -52,27 +60,20 @@ namespace Clens
                     _allHistoryItems.Add(item);
                 }
 
+                // Заполняем пикер фирм уникальными значениями
+                var uniqueFirms = _allHistoryItems
+                    .Where(i => !string.IsNullOrEmpty(i.LensesFirm))
+                    .Select(i => i.LensesFirm)
+                    .Distinct()
+                    .OrderBy(f => f)
+                    .ToList();
+
                 ApplyFilters();
                 UpdateVisibility();
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Ошибка", ex.Message, "OK");
-                UpdateVisibility();
-            }
-        }
-
-        private void SearchDateButton_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                hiddenDatePicker.Focus();
-
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Ошибка: {ex.Message}");
             }
         }
 
@@ -84,9 +85,14 @@ namespace Clens
 
         private void ClearSearchButton_Clicked(object sender, EventArgs e)
         {
+            _dateWasSelected = false;
             _selectedDate = null;
+            hiddenDatePicker.Date = DateTime.Today; // Сбрасываем на текущую дату (или можно сделать null, если поддерживается)
             _selectedType = null;
+            dateEntry.Text = "Выберите дату"; // Очищаем Entry
+            _selectedFirm = null;
             SearchTypePicker.SelectedIndex = -1;
+            SearchFirmPicker.SelectedIndex = -1;
             ApplyFilters();
         }
 
@@ -96,24 +102,34 @@ namespace Clens
 
             var filtered = _allHistoryItems.AsEnumerable();
 
-            if (_selectedDate.HasValue)
+            // Фильтрация по дате (если выбрана)
+            if (_selectedDate.HasValue && dateEntry.Text != "Выберите дату" && _dateWasSelected)
             {
                 filtered = filtered.Where(item =>
-                {
-                    if (item.StartDateParsed.HasValue && item.EndDateParsed.HasValue)
-                    {
-                        return item.StartDateParsed.Value.Date == _selectedDate.Value.Date ||
-                               item.EndDateParsed.Value.Date == _selectedDate.Value.Date;
-                    }
-                    return false;
-                });
+                    item.StartDateParsed.HasValue &&
+                    item.EndDateParsed.HasValue &&
+                    _selectedDate.Value.Date >= item.StartDateParsed.Value.Date &&
+                    _selectedDate.Value.Date <= item.EndDateParsed.Value.Date
+                );
             }
 
+            // Фильтрация по типу линз (если выбран)
             if (!string.IsNullOrEmpty(_selectedType))
             {
                 filtered = filtered.Where(item => item.Type == _selectedType);
             }
 
+            // Фильтрация по фирме линз (если выбрана)
+            if (!string.IsNullOrEmpty(_selectedFirm))
+            {
+                filtered = filtered.Where(item =>
+                    _selectedFirm == "Без фирмы"
+                        ? string.IsNullOrEmpty(item.LensesFirm)
+                        : item.LensesFirm == _selectedFirm
+                );
+            }
+
+            // Добавляем отфильтрованные элементы
             foreach (var item in filtered)
             {
                 _filteredHistoryItems.Add(item);
@@ -165,6 +181,7 @@ namespace Clens
             public string EndDate { get; set; }
             public string StartDate { get; set; }
             public string Type { get; set; }
+            public string LensesFirm { get; set; }
 
             public DateTime? StartDateParsed => DateTime.TryParseExact(StartDate, "dd MMMM yyyy",
                 CultureInfo.GetCultureInfo("ru-RU"), DateTimeStyles.None, out var parsedDate)
@@ -209,9 +226,85 @@ namespace Clens
 
         private void hiddenDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            _selectedDate = e.NewDate;
-            ApplyFilters();
+            Debug.WriteLine("DATE SELECTED");
+            _dateWasSelected = true;
+           
+            if (!_selectedDate.HasValue || _selectedDate.Value.Date != e.NewDate.Date)
+            {
+                _selectedDate = e.NewDate;
+                if (hiddenDatePicker.Date == DateTime.Today)
+                {
+                    _selectedDate = DateTime.Today;
+                    dateEntry.Text = DateTime.Today.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("ru-RU"));
+                }
+                    dateEntry.Text = e.NewDate.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("ru-RU"));
+                ApplyFilters();
+            }
             hiddenDatePicker.Unfocus();
+        }
+
+        private void SearchFirmPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SearchFirmPicker.SelectedIndex == 0) // "Без фирмы"
+            {
+                _selectedFirm = "Без фирмы";
+            }
+            else if (SearchFirmPicker.SelectedIndex == -1) // Ничего не выбрано
+            {
+                _selectedFirm = null;
+            }
+            else // Выбрана конкретная фирма
+            {
+                _selectedFirm = SearchFirmPicker.SelectedItem?.ToString();
+            }
+
+            Debug.WriteLine($"Selected firm: {_selectedFirm ?? "null"}");
+            ApplyFilters();
+        }
+
+        private void OnDateEntryTapped(object sender, EventArgs e)
+        {
+            _dateWasSelected = false;
+            hiddenDatePicker.Focus();
+        }
+
+        private async Task LoadFirms()
+        {
+
+            try
+            {
+                _firebaseClient = new FirebaseClient("https://clensdatabase-default-rtdb.firebaseio.com/");
+
+                _allFirms.Add("Без фирмы");
+
+                // Стандартные фирмы
+                var standardFirms = new List<string> { "ACUVUE", "Dailies", "Air Optix Aqua", "Biomedics", "Proclear", "PureVision", "Biotrue" };
+                foreach (var firm in standardFirms) _allFirms.Add(firm);
+
+                // Пользовательские фирмы
+                var userUid = await new FirebaseService().GetUserUidAsync();
+                var customFirms = await _firebaseClient
+                    .Child("Users")
+                    .Child(userUid)
+                    .Child("CustomFirms")
+                    .OnceSingleAsync<Dictionary<string, string>>();
+
+                if (customFirms != null)
+                {
+                    foreach (var firm in customFirms.Values.Where(f => !_allFirms.Contains(f)))
+                        _allFirms.Add(firm);
+                }
+
+                // Установка ItemsSource и SelectedItem
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    SearchFirmPicker.ItemsSource = _allFirms;
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка загрузки фирм: {ex.Message}");
+            }
         }
     }
 }

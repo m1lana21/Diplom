@@ -2,52 +2,80 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Clens.HistoryPage"
-             xmlns:local="clr-namespace:Clens"
+             xmlns:local="clr-namespace:Clens" xmlns:converters="clr-namespace:Clens.Converters"
              BackgroundColor="White">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibility" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
-        <!-- Панель поиска -->
-        <Frame Margin="10" Padding="10" CornerRadius="10" BackgroundColor="#F5F5F5" HasShadow="False">
-            <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
-                <!-- Кнопка выбора даты -->
-                <Frame Padding="0" CornerRadius="10" BackgroundColor="White" HasShadow="False">
-                    <ImageButton x:Name="SearchDateButton" 
-                                HeightRequest="40" 
-                                WidthRequest="40" 
-                                Source="calendar.png"
-                                BackgroundColor="Transparent"
-                                Clicked="SearchDateButton_Clicked"/>
-                </Frame>
+        <Frame Grid.Row="0" 
+               HeightRequest="200"
+               Padding="15,10"
+               Margin="10"
+               CornerRadius="12"
+               BackgroundColor="White"
+               HasShadow="True"
+               BorderColor="#E0E0E0">
 
-                <!-- Выбор типа линз -->
-                <Picker x:Name="SearchTypePicker" 
-                       Title="Тип линз" 
-                       TitleColor="Gray"
-                       TextColor="Black"
-                       FontSize="20"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalOptions="Center"
-                       SelectedIndexChanged="SearchTypePicker_SelectedIndexChanged">
-                    <Picker.Items>
-                        <x:String>Однодневные</x:String>
-                        <x:String>Двухнедельные</x:String>
-                        <x:String>Одномесячные</x:String>
-                        <x:String>Полугодовые</x:String>
-                        <x:String>Годовые</x:String>
-                    </Picker.Items>
-                </Picker>
+            <StackLayout Spacing="12">
+                <!-- Строка с DatePicker и кнопкой очистки -->
+                <Grid ColumnDefinitions="*, Auto">
 
-                <!-- Кнопка сброса -->
-                <ImageButton x:Name="ClearSearchButton"  
-                           HeightRequest="35" 
-                           WidthRequest="35" 
-                           Source="delete.png" 
-                           BackgroundColor="Transparent"
-                           Clicked="ClearSearchButton_Clicked"/>
+                    <Label x:Name="dateEntry"
+                        FontSize="18"
+                        TextColor="#333333"
+                           FontFamily="Comfortaa-Light"
+                        Text="Выберите дату">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDateEntryTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <ImageButton x:Name="ClearSearchButton"  
+                                 Grid.Column="1"
+                                 HeightRequest="30"
+                                 WidthRequest="30" 
+                                 Source="delete.png" 
+                                 BackgroundColor="Transparent"
+                                 Clicked="ClearSearchButton_Clicked"/>
+                </Grid>
+
+                <!-- Два пикера в одной строке -->
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                    <Picker x:Name="SearchTypePicker" 
+                            Title="Тип линз" 
+                            TitleColor="#9E9E9E"
+                            TextColor="#333333"
+                            FontSize="18"
+                            BackgroundColor="#F5F5F5"
+                            HorizontalOptions="FillAndExpand"
+                            SelectedIndexChanged="SearchTypePicker_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Однодневные</x:String>
+                            <x:String>Двухнедельные</x:String>
+                            <x:String>Одномесячные</x:String>
+                            <x:String>Полугодовые</x:String>
+                            <x:String>Годовые</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Picker x:Name="SearchFirmPicker" 
+                            Grid.Column="1"
+                            Title="Фирма линз"
+                            TitleColor="#9E9E9E"
+                            TextColor="#333333"
+                            FontSize="18"
+                            BackgroundColor="#F5F5F5"
+                            HorizontalOptions="FillAndExpand"
+                            SelectedIndexChanged="SearchFirmPicker_SelectedIndexChanged"/>
+                </Grid>
             </StackLayout>
         </Frame>
 
-        <!-- Список истории -->
         <ListView x:Name="HistoryListView" 
                  HasUnevenRows="True"
                  IsVisible="False"
@@ -61,6 +89,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                                     <Label FontSize="18" Text="{Binding StartDate, StringFormat='Начало: {0:dd.MM.yyyy}'}" />
                                     <Label FontSize="18" Text="{Binding EndDate, StringFormat='Окончание: {0:dd.MM.yyyy}'}" />
+                                    <Label FontSize="18" IsVisible="{Binding LensesFirm, Converter={StaticResource NullToVisibility}}" Text="{Binding LensesFirm, StringFormat='Фирма линз: {0}'}" />
                                     <Label FontSize="18" Text="{Binding Type, StringFormat='Тип линз: {0}'}" />
                                     <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность: {0:%d} дней'}" />
                                 </StackLayout>
@@ -75,11 +104,11 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <!-- Состояние пустого списка -->
         <StackLayout x:Name="EmptyStateLayout" 
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Spacing="40"
+                     Margin="0,100,0,0"
                     IsVisible="False">
             <Image Source="emptyhistory.png" 
                   HeightRequest="125" 
@@ -94,64 +123,18 @@
                   VerticalOptions="Center" 
                   HorizontalTextAlignment="Center"/>
         </StackLayout>
+
         <DatePicker x:Name="hiddenDatePicker"
-                IsVisible="false"
-                Date="{Binding SelectedDate, Mode=TwoWay}"
-                Format="dd MMMM yyyy"
-                MinimumDate="2020-01-01"
-                DateSelected="hiddenDatePicker_DateSelected" />
+            FontSize="18"
+            Focused="hiddenDatePicker_Focused"
+            Unfocused="hiddenDatePicker_Unfocused"
+            TextColor="#333333"
+            IsVisible="false"
+            Format="dd MMMM yyyy"
+            MinimumDate="2020-01-01"
+            WidthRequest="200"
+            BackgroundColor="Transparent"/>
+
     </StackLayout>
     
 </ContentPage>
-
-<!--<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Clens.HistoryPage" xmlns:local="clr-namespace:Clens">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="5" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
-                    <ImageButton x:Name="SearchDateButton" HeightRequest="40" Source="calendar.png" WidthRequest="40" Clicked="SearchDateButton_Clicked"/>
-                <Picker x:Name="SearchTypePicker" Title="Поиск по типу линз" SelectedIndexChanged="SearchTypePicker_SelectedIndexChanged">
-                    <Picker.Items>
-                        <x:String>Однодневные</x:String>
-                        <x:String>Двухнедельные</x:String>
-                        <x:String>Одномесячные</x:String>
-                        <x:String>Полугодовые</x:String>
-                        <x:String>Годовые</x:String>
-                    </Picker.Items>
-                </Picker>
-                </StackLayout>
-                
-                <ImageButton x:Name="ClearSearchButton"  HeightRequest="35" WidthRequest="35" Source="delete.png" Margin="50,0,0,0" Clicked="ClearSearchButton_Clicked"/>
-            </StackLayout>
-        </StackLayout>
-        <ListView ItemsSource="{Binding HistoryItems}" x:Name="HistoryListView" HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame Padding="5" Margin="15" CornerRadius="15" BorderColor="#B5DDA4" IsClippedToBounds="True">
-                            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
-                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                                    <Label FontSize="18" Text="{Binding StartDate, StringFormat='Начало: {0:dd.MM.yyyy}'}" />
-                                    <Label FontSize="18" Text="{Binding EndDate, StringFormat='Окончание: {0:dd.MM.yyyy}'}" />
-                                    <Label FontSize="18" Text="{Binding Type, StringFormat='Тип линз: {0}'}" />
-                                    <Label FontSize="18" Text="{Binding WearingDuration, StringFormat='Продолжительность: {0:%d} дней'}" />
-                                </StackLayout>
-                                <StackLayout VerticalOptions="Center" Margin="0,0,10,0" HorizontalOptions="End" Grid.RowSpan="2" Grid.Column="1">
-                                    <ImageButton Source="edit.png" x:Name="editButton" HeightRequest="30" WidthRequest="30" Clicked="editButton_Clicked"/>
-                                    <ImageButton x:Name="deleteButton" HeightRequest="27" WidthRequest="30" Source="delete.png" Clicked="deleteButton_Clicked"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <StackLayout x:Name="EmptyStateLayout" VerticalOptions="Center" HorizontalOptions="Center" Spacing="40" Margin="0,237,0,0">
-            <Image Source="emptyhistory.png" HeightRequest="125" WidthRequest="125" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Label Text="Ваша история носки линз пока пуста" FontSize="20" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
-        </StackLayout>
-        
-    </StackLayout>
-</ContentPage>-->

@@ -5,9 +5,7 @@
 
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
-            <!-- Информация о пользователе -->
             <StackLayout Spacing="15" HorizontalOptions="Center">
-                <!-- Аватар и логин -->
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <Frame CornerRadius="30" HeightRequest="60" WidthRequest="60" Padding="0"
                            BackgroundColor="Transparent" BorderColor="#B5DDA4">
@@ -18,16 +16,15 @@
                            FontFamily="Comfortaa-Bold"
                            TextColor="#333333"
                            VerticalTextAlignment="Center"/>
+                    <ImageButton Source="edit.png" Margin="130,0,0,0" WidthRequest="50" Background="transparent" HeightRequest="50" Clicked="ImageButton_Clicked"></ImageButton>
                 </StackLayout>
 
-                <!-- Почта -->
                 <StackLayout Orientation="Horizontal" Spacing="5">
                     <Label Text="Почта:" FontSize="18" TextColor="Gray"/>
                     <Label x:Name="EmailLabel" FontSize="18" TextColor="#333333"/>
                 </StackLayout>
             </StackLayout>
             
-            <!-- Архив справок -->
             <StackLayout>
                 <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="10">
                     <Label Text="Архив справок"
@@ -43,7 +40,6 @@
                                  Clicked="AddButton_Clicked"/>
                 </StackLayout>
 
-                <!-- Список файлов -->
                 <Frame CornerRadius="15" HasShadow="True" BorderColor="#EEEEEE">
                     <ListView x:Name="FilesListView"
                               HasUnevenRows="True"
@@ -74,7 +70,6 @@
                 </Frame>
             </StackLayout>
 
-            <!-- Выход -->
             <Label Text="ВЫЙТИ"
                    TextColor="Red"
                    HorizontalOptions="Center"
